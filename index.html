@@ -78,26 +78,6 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 .modebox.yes{background:#123a1f;border-color:#4dff88;color:#4dff88}
 .modebox.love{background:#12233a;border-color:#4da6ff;color:#4da6ff}
 
-
-.section-note-toggle{
-  font-size:12px;
-  color:var(--muted);
-  text-decoration:underline;
-  cursor:pointer;
-  display:inline-block;
-  margin-top:8px;
-}
-.section-note-box{
-  display:none;
-  margin-top:6px;
-}
-.section-note-box.open{
-  display:block;
-}
-.section-note-box textarea{
-  min-height:58px;
-}
-
 </style>
 </head>
 <body>
@@ -118,7 +98,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
     <input id="partnerName" type="text">
   </label>
   <label class="field">
-    <span>Your role</span>
+    <span>Role</span>
     <select id="role">
       <option>Rigger</option>
       <option>Model</option>
@@ -135,10 +115,8 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 </div>
 
 
-<div style="font-size:12px;color:#aaa;margin-bottom:6px;display:flex;gap:14px;align-items:center;flex-wrap:wrap">
-  <span style="color:#ff4d4d;font-weight:600">✕ No</span>
-  <span style="color:#4dff88;font-weight:600">✓ Yes</span>
-  <span style="color:#4da6ff;font-weight:600">♥ Love</span>
+<div style="font-size:12px;color:#aaa;margin-bottom:6px">
+✕ No &nbsp;&nbsp; ✓ Yes &nbsp;&nbsp; ♥ Love
 </div>
 
 <details open>
@@ -159,14 +137,6 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="ropeFull"><span>Full suspension</span></label>
     </div>
   </div>
-
-    <div class="section">
-      <span class="section-note-toggle" onclick="toggleSectionNote('noteRopePlacement')">Notes</span>
-      <div id="noteRopePlacement" class="section-note-box">
-        <textarea id="sectionNoteRopePlacement" placeholder="Optional notes for rope placement"></textarea>
-      </div>
-    </div>
-
 </details>
 
 <details>
@@ -178,16 +148,9 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="styleTorment"><span>Torment rope (semenawa)</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="styleCaress"><span>Caress rope (aibunawa)</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="styleAesthetic"><span>Rope aesthetics</span></label>
+<label class="check"><input class="mode-input" type="checkbox" id="styleErotic"><span>Erotic rope</span></label>
     </div>
   </div>
-
-    <div class="section">
-      <span class="section-note-toggle" onclick="toggleSectionNote('noteRopeStyle')">Notes</span>
-      <div id="noteRopeStyle" class="section-note-box">
-        <textarea id="sectionNoteRopeStyle" placeholder="Optional notes for rope style"></textarea>
-      </div>
-    </div>
-
 </details>
 
 <details>
@@ -217,14 +180,6 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="markShoulders"><span>Shoulders</span></label>
     </div>
   </div>
-
-    <div class="section">
-      <span class="section-note-toggle" onclick="toggleSectionNote('noteRopeMarks')">Notes</span>
-      <div id="noteRopeMarks" class="section-note-box">
-        <textarea id="sectionNoteRopeMarks" placeholder="Optional notes for rope marks"></textarea>
-      </div>
-    </div>
-
 </details>
 
 <details>
@@ -297,14 +252,6 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
     </div>
   </div>
-
-    <div class="section">
-      <span class="section-note-toggle" onclick="toggleSectionNote('noteTouch')">Notes</span>
-      <div id="noteTouch" class="section-note-box">
-        <textarea id="sectionNoteTouch" placeholder="Optional notes for touch"></textarea>
-      </div>
-    </div>
-
 </details>
 
 <details>
@@ -352,14 +299,6 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="lipBrush"><span>Lip brush</span></label>
     </div>
   </div>
-
-    <div class="section">
-      <span class="section-note-toggle" onclick="toggleSectionNote('noteKissLickBite')">Notes</span>
-      <div id="noteKissLickBite" class="section-note-box">
-        <textarea id="sectionNoteKissLickBite" placeholder="Optional notes for kiss / lick / bite"></textarea>
-      </div>
-    </div>
-
 </details>
 
 <details>
@@ -384,14 +323,6 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="impactRope"><span>Rope</span></label>
     </div>
   </div>
-
-    <div class="section">
-      <span class="section-note-toggle" onclick="toggleSectionNote('noteImpact')">Notes</span>
-      <div id="noteImpact" class="section-note-box">
-        <textarea id="sectionNoteImpact" placeholder="Optional notes for impact"></textarea>
-      </div>
-    </div>
-
 </details>
 
 <details>
@@ -409,14 +340,6 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="bunnyTable"><span>Table</span></label>
     </div>
   </div>
-
-    <div class="section">
-      <span class="section-note-toggle" onclick="toggleSectionNote('noteBunnyPositions')">Notes</span>
-      <div id="noteBunnyPositions" class="section-note-box">
-        <textarea id="sectionNoteBunnyPositions" placeholder="Optional notes for bunny positions"></textarea>
-      </div>
-    </div>
-
 </details>
 
 <details>
@@ -438,14 +361,6 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="distFar"><span>Distant</span></label>
     </div>
   </div>
-
-    <div class="section">
-      <span class="section-note-toggle" onclick="toggleSectionNote('noteTopPosition')">Notes</span>
-      <div id="noteTopPosition" class="section-note-box">
-        <textarea id="sectionNoteTopPosition" placeholder="Optional notes for top position"></textarea>
-      </div>
-    </div>
-
 </details>
 
 <details>
@@ -459,14 +374,6 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="talkDirty"><span>Dirty talk</span></label>
     </div>
   </div>
-
-    <div class="section">
-      <span class="section-note-toggle" onclick="toggleSectionNote('noteTalking')">Notes</span>
-      <div id="noteTalking" class="section-note-box">
-        <textarea id="sectionNoteTalking" placeholder="Optional notes for talking"></textarea>
-      </div>
-    </div>
-
 </details>
 
 <details>
@@ -488,16 +395,9 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="dynNurturing"><span>Nurturing</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="dynBrat"><span>Brat / brat tamer</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="dynDegrading"><span>Degrading</span></label>
+<label class="check"><input class="mode-input" type="checkbox" id="dynManhandling"><span>Manhandling</span></label>
     </div>
   </div>
-
-    <div class="section">
-      <span class="section-note-toggle" onclick="toggleSectionNote('notePowerDynamics')">Notes</span>
-      <div id="notePowerDynamics" class="section-note-box">
-        <textarea id="sectionNotePowerDynamics" placeholder="Optional notes for power dynamics"></textarea>
-      </div>
-    </div>
-
 </details>
 
 <details>
@@ -516,51 +416,29 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="afterNextDebrief"><span>Next-day debrief</span></label>
     </div>
   </div>
-
-    <div class="section">
-      <span class="section-note-toggle" onclick="toggleSectionNote('noteAftercare')">Notes</span>
-      <div id="noteAftercare" class="section-note-box">
-        <textarea id="sectionNoteAftercare" placeholder="Optional notes for aftercare"></textarea>
-      </div>
-    </div>
-
 </details>
 
 <details>
-  <summary>Additional Information</summary>
+  <summary>Notes</summary>
   <div class="section">
     <textarea id="notes"></textarea>
   </div>
 </details>
 
-<div class="btns" style="grid-template-columns:1fr 1fr">
-  <button onclick="shareSummary()">Share Summary</button>
-  <button onclick="shareLink()">Save / Share Preset</button>
+<div class="btns">
+  <button onclick="generateSummary()">Generate</button>
+  <button onclick="copySummary()">Copy</button>
+  <button onclick="shareLink()">Share link</button>
 </div>
 
-<div id="status" class="output" style="padding:8px;font-size:12px;color:#aaa">Ready.</div>
+<div id="out" class="output"></div>
 
 <script>
-
 function g(id){ return document.getElementById(id); }
-
-function toggleSectionNote(id){
-  const el = g(id);
-  if (el) el.classList.toggle('open');
-}
 
 const checkboxIds = Array.from(document.querySelectorAll('input[type="checkbox"]')).map(el => el.id);
 const textIds = Array.from(document.querySelectorAll('input[type="text"], input[type="date"], textarea')).map(el => el.id);
 const selectIds = Array.from(document.querySelectorAll('select')).map(el => el.id);
-
-const modeCycle = {none:'yes', yes:'love', love:'hard', hard:'none'};
-const modeSymbol = {none:'', yes:'✓', love:'♥', hard:'✕'};
-const modeClass = {none:'none', yes:'yes', love:'love', hard:'hard'};
-
-function setStatus(msg){
-  const el = g('status');
-  if (el) el.textContent = msg;
-}
 
 function currentDateString(){
   const d = new Date();
@@ -574,45 +452,9 @@ function setDefaultDate(){
   if (!g('sceneDate').value) g('sceneDate').value = currentDateString();
 }
 
-function isModeInput(id){
-  const el = g(id);
-  return !!(el && el.classList.contains('mode-input'));
-}
-
-function getMode(id){
-  const el = g(id);
-  return (el && el.dataset.mode) ? el.dataset.mode : 'none';
-}
-
-function renderModeBox(input){
-  const box = input.parentElement.querySelector('.modebox');
-  const mode = getMode(input.id);
-  if (!box) return;
-  box.className = 'modebox ' + (modeClass[mode] || 'none');
-  box.textContent = modeSymbol[mode] || '';
-}
-
-function initModes(){
-  document.querySelectorAll('input.mode-input').forEach(input => {
-    if (!input.dataset.mode) input.dataset.mode = 'none';
-    let box = input.parentElement.querySelector('.modebox');
-    if (!box) {
-      box = document.createElement('span');
-      box.className = 'modebox none';
-      input.insertAdjacentElement('afterend', box);
-    }
-    renderModeBox(input);
-    input.parentElement.addEventListener('click', (e) => {
-      e.preventDefault();
-      input.dataset.mode = modeCycle[getMode(input.id)];
-      renderModeBox(input);
-    });
-  });
-}
-
 function defaultState(){
   const d = {};
-  checkboxIds.forEach(id => d[id] = isModeInput(id) ? 'none' : false);
+  checkboxIds.forEach(id => d[id] = false);
   textIds.forEach(id => d[id] = '');
   selectIds.forEach(id => d[id] = g(id).options[0].value);
   d.sceneDate = currentDateString();
@@ -624,33 +466,15 @@ function applyStateFromUrl(){
   p.forEach((v,k) => {
     const el = g(k);
     if (!el) return;
-    if (el.type === 'checkbox') {
-      if (isModeInput(k)) el.dataset.mode = v;
-      else el.checked = (v === 'true');
-    } else {
-      el.value = v;
-    }
-    if (k.startsWith('sectionNote') && v) {
-      const boxId = 'note' + k.replace('sectionNote','');
-      const box = g(boxId);
-      if (box) box.classList.add('open');
-    }
+    if (el.type === 'checkbox') el.checked = (v === 'true');
+    else el.value = v;
   });
 }
 
-function modeList(ids, labels){
-  const no = [], yes = [], love = [];
-  ids.forEach((id, i) => {
-    const m = getMode(id);
-    if (m === 'hard') no.push(labels[i]);
-    else if (m === 'yes') yes.push(labels[i]);
-    else if (m === 'love') love.push(labels[i]);
-  });
-  const parts = [];
-  if (no.length) parts.push('No: ' + no.join(', '));
-  if (yes.length) parts.push('Yes: ' + yes.join(', '));
-  if (love.length) parts.push('Love: ' + love.join(', '));
-  return parts.length ? parts.join('\n') : 'None';
+function checkedList(ids, labels){
+  const out = [];
+  ids.forEach((id, i) => { if (g(id).checked) out.push(labels[i]); });
+  return out.length ? out.join(', ') : 'None';
 }
 
 function touchLine(area, base){
@@ -663,35 +487,29 @@ function touchLine(area, base){
 }
 
 function generateSummary(){
-  return `SCENE NEGOTIATION
+  const txt = `SCENE NEGOTIATION
 
 Date: ${g('sceneDate').value}
 You: ${g('yourName').value || '—'}
 Partner: ${g('partnerName').value || '—'}
-Your role: ${g('role').value}
+Role: ${g('role').value}
 Safeword: ${g('safeword').value || '—'}
 
 ROPE PLACEMENT
-${modeList(
-  ['ropeChest','ropeHips','ropeLegs','ropeArms','ropeHands','ropeWrists','ropeFeet','ropeNeck','ropeFace','ropeCrotch'],
-  ['Chest','Hips','Legs','Arms','Hands','Wrists','Feet','Neck','Face','Crotch rope']
-)}
-
-SUSPENSION / UPLINES
-${modeList(
-  ['ropePartial','ropeFull','ropeUplines'],
-  ['Partial suspension','Full suspension','Positional uplines']
+${checkedList(
+  ['ropeChest','ropeHips','ropeLegs','ropeArms','ropeHands','ropeWrists','ropeFeet','ropeNeck','ropeFace','ropeCrotch','ropePartial','ropeFull'],
+  ['Chest','Hips','Legs','Arms','Hands','Wrists','Feet','Neck','Face','Crotch rope','Partial suspension','Full suspension']
 )}
 
 ROPE STYLE
-${modeList(
-  ['styleSomatic','styleLab','styleTorment','styleCaress','styleAesthetic'],
-  ['Somatic rope','Labbing / technical','Torment rope (semenawa)','Caress rope (aibunawa)','Rope aesthetics']
+${checkedList(
+  ['styleSomatic','styleLab','styleTorment','styleCaress','styleAesthetic','styleErotic'],
+  ['Somatic rope','Labbing / technical','Torment rope (semenawa)','Caress rope (aibunawa)','Rope aesthetics','Erotic rope']
 )}
 
 ROPE MARKS
 Tolerance: ${g('ropeMarks').value}
-${modeList(
+Areas: ${checkedList(
   ['markChest','markHips','markLegs','markArms','markHands','markWrists','markFeet','markNeck','markFace','markCrotch','markBack','markShoulders'],
   ['Chest','Hips','Legs','Arms','Hands','Wrists','Feet','Neck','Face','Crotch','Back','Shoulders']
 )}
@@ -707,123 +525,95 @@ ${touchLine('Crotch','touchCrotch')}
 ${touchLine('Bottom','touchBottom')}
 
 KISS
-${modeList(
+${checkedList(
   ['kissMouth','kissNeck','kissChest','kissShoulders','kissBack','kissLegs','kissCrotch','kissBottom'],
   ['Mouth','Neck','Chest','Shoulders','Back','Legs','Crotch','Bottom']
 )}
 
 LICK
-${modeList(
+${checkedList(
   ['lickMouth','lickNeck','lickChest','lickShoulders','lickBack','lickLegs','lickCrotch','lickBottom'],
   ['Mouth','Neck','Chest','Shoulders','Back','Legs','Crotch','Bottom']
 )}
 
 BITE
-${modeList(
+${checkedList(
   ['biteMouth','biteNeck','biteChest','biteShoulders','biteBack','biteLegs','biteCrotch','biteBottom'],
   ['Mouth','Neck','Chest','Shoulders','Back','Legs','Crotch','Bottom']
 )}
 
 PROXIMITY
-${modeList(
+${checkedList(
   ['proximityClose','lipBrush'],
   ['Close breath / proximity','Lip brush']
 )}
 
 IMPACT LOCATIONS
-${modeList(
+${checkedList(
   ['impactButt','impactThighs','impactBack','impactShoulders','impactChest','impactGroin'],
   ['Butt','Thighs','Upper back','Shoulders','Chest','Groin']
 )}
 
 IMPACT IMPLEMENTS
-${modeList(
+${checkedList(
   ['impactHand','impactPaddle','impactFlogger','impactCrop','impactRope'],
   ['Hand','Paddle','Flogger','Crop','Rope']
 )}
 
 BUNNY POSITIONS
-${modeList(
+${checkedList(
   ['bunnySeiza','bunnySideSitting','bunnyNadu','bunnyKneel','bunnySit','bunnyStand','bunnyFloor','bunnyChair','bunnyTable'],
   ['Seiza','Side sitting','Nadu','Kneeling','Sitting','Standing','Lying down','Chair','Table']
 )}
 
 TOP POSITION
-Direction:
-${modeList(
+Direction: ${checkedList(
   ['topFront','topBehind','topSide','topAbove','topUnder'],
   ['In front','Behind','Side','Above / on top','Under']
 )}
-Distance:
-${modeList(
+Distance: ${checkedList(
   ['distClose','distMid','distFar'],
   ['Very close','Moderate distance','Distant']
 )}
 
 TALKING
-${modeList(
+${checkedList(
   ['talkConversation','talkMinimal','talkInstructional','talkPlayful','talkDirty'],
   ['Conversational','Minimal','Instructional','Playful','Dirty talk']
 )}
 
 POWER DYNAMICS
 Intensity: ${g('dynamicIntensity').value}
-${modeList(
-  ['dynServiceTop','dynServiceBottom','dynOwnership','dynToy','dynNurturing','dynBrat','dynDegrading'],
-  ['Service (top)','Service (bottom)','Ownership','Toy','Nurturing','Brat / brat tamer','Degrading']
+Types: ${checkedList(
+  ['dynServiceTop','dynServiceBottom','dynOwnership','dynToy','dynNurturing','dynBrat','dynDegrading','dynManhandling'],
+  ['Service (top)','Service (bottom)','Ownership','Toy','Nurturing','Brat / brat tamer','Degrading','Manhandling']
 )}
 
 AFTERCARE
-${modeList(
+${checkedList(
   ['afterHug','afterCuddle','afterBlanket','afterWater','afterSnacks','afterQuiet','afterTalk','afterDebriefNight','afterNextCheck','afterNextDebrief'],
   ['Hugs','Cuddles','Blanket','Water','Snacks','Quiet','Talking','Debrief tonight','Next-day check-in','Next-day debrief']
 )}
 
-ADDITIONAL INFORMATION
-${g('notes').value || 'None'}
-
-SECTION NOTES
-${[
-  ['Rope Placement','sectionNoteRopePlacement'],
-  ['Rope Style','sectionNoteRopeStyle'],
-  ['Rope Marks','sectionNoteRopeMarks'],
-  ['Touch','sectionNoteTouch'],
-  ['Kiss / Lick / Bite','sectionNoteKissLickBite'],
-  ['Impact','sectionNoteImpact'],
-  ['Bunny Positions','sectionNoteBunnyPositions'],
-  ['Top Position','sectionNoteTopPosition'],
-  ['Talking','sectionNoteTalking'],
-  ['Power Dynamics','sectionNotePowerDynamics'],
-  ['Aftercare','sectionNoteAftercare']
-].map(([label,id]) => g(id) && g(id).value.trim() ? (label + ': ' + g(id).value.trim()) : '').filter(Boolean).join('\n') || 'None'}`;
+NOTES
+${g('notes').value || 'None'}`;
+  g('out').textContent = txt;
 }
 
-async function copyTextRobust(text){
-  if (navigator.clipboard && window.isSecureContext) {
-    await navigator.clipboard.writeText(text);
-    return;
+async function copySummary(){
+  try{
+    await navigator.clipboard.writeText(g('out').textContent);
+  }catch(e){
+    alert('Copy failed on this browser.');
   }
-  const ta = document.createElement('textarea');
-  ta.value = text;
-  ta.setAttribute('readonly', '');
-  ta.style.position = 'fixed';
-  ta.style.top = '-9999px';
-  ta.style.left = '-9999px';
-  document.body.appendChild(ta);
-  ta.focus();
-  ta.select();
-  const ok = document.execCommand('copy');
-  document.body.removeChild(ta);
-  if (!ok) throw new Error('copy failed');
 }
 
-function buildShareUrl(){
+function shareLink(){
   const defaults = defaultState();
   const p = new URLSearchParams();
 
   checkboxIds.forEach(id => {
-    const val = isModeInput(id) ? getMode(id) : g(id).checked;
-    if (val !== defaults[id]) p.set(id, String(val));
+    if (g(id).checked !== defaults[id]) p.set(id, 'true');
   });
 
   textIds.forEach(id => {
@@ -837,59 +627,37 @@ function buildShareUrl(){
   });
 
   const base = location.origin + location.pathname;
-  return p.toString() ? (base + '?' + p.toString()) : base;
-}
-
-async function shareSummary(){
-  const txt = generateSummary();
-  try{
-    if (navigator.share) {
-      await navigator.share({
-        title: 'Scene negotiation summary',
-        text: txt
-      });
-      setStatus('Summary shared.');
-      return;
-    }
-    await copyTextRobust(txt);
-    setStatus('Share sheet unavailable — summary copied.');
-  }catch(e){
-    if (e && e.name === 'AbortError') {
-      setStatus('Share cancelled.');
-      return;
-    }
-    setStatus('Could not share summary automatically.');
-  }
-}
-
-async function shareLink(){
-  const url = buildShareUrl();
-  try{
-    if (navigator.share) {
-      await navigator.share({
-        title: 'Scene preset',
-        text: 'Scene negotiation preset',
-        url: url
-      });
-      setStatus('Preset shared.');
-      return;
-    }
-    await copyTextRobust(url);
-    setStatus('Share sheet unavailable — preset link copied.');
-  }catch(e){
-    if (e && e.name === 'AbortError') {
-      setStatus('Share cancelled.');
-      return;
-    }
-    setStatus('Could not share preset automatically.');
-  }
+  g('out').textContent = p.toString() ? (base + '?' + p.toString()) : base;
 }
 
 window.onload = function(){
   applyStateFromUrl();
   setDefaultDate();
-  initModes();
 };
+
+const modeCycle = {none:'yes', yes:'love', love:'hard', hard:'none'};
+const modeSymbol = {none:'', yes:'✓', love:'♥', hard:'✕'};
+const modeClass = {none:'none', yes:'yes', love:'love', hard:'hard'};
+
+function initModes(){
+ document.querySelectorAll('input.mode-input').forEach(el=>{
+   el.dataset.mode='none';
+   const box=document.createElement('span');
+   box.className='modebox none';
+   el.after(box);
+
+   el.parentElement.onclick=(e)=>{
+     e.preventDefault();
+     let m=el.dataset.mode;
+     m=modeCycle[m];
+     el.dataset.mode=m;
+     box.className='modebox '+modeClass[m];
+     box.textContent=modeSymbol[m];
+   };
+ });
+}
+
+window.addEventListener('load', initModes);
 
 </script>
 
