@@ -853,7 +853,8 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="dynServiceBottom"><span>Service (bottom)</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="dynOwnership"><span>Ownership</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="dynToy"><span>Toy</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="dynNurturing"><span>Nurturing</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynNurturingTop"><span>Nurturing (top)</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynNurturingBottom"><span>Nurturing (bottom)</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="dynBrat"><span>Brat / brat tamer</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="dynDegrading"><span>Degrading</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="dynManhandling"><span>Manhandling</span></label>
@@ -1195,8 +1196,8 @@ ${groupedModeList(
 POWER DYNAMICS
 Intensity: ${g('dynamicIntensity').value}
 ${groupedModeList(
-  ['dynServiceTop','dynServiceBottom','dynOwnership','dynToy','dynNurturing','dynBrat','dynDegrading','dynManhandling'],
-  ['Service (top)','Service (bottom)','Ownership','Toy','Nurturing','Brat / brat tamer','Degrading','Manhandling']
+  ['dynServiceTop','dynServiceBottom','dynOwnership','dynToy','dynNurturingTop','dynNurturingBottom','dynBrat','dynDegrading','dynManhandling'],
+  ['Service (top)','Service (bottom)','Ownership','Toy','Nurturing (top)','Nurturing (bottom)','Brat / brat tamer','Degrading','Manhandling']
 )}${g('sectionNotePowerDynamics') && g('sectionNotePowerDynamics').value.trim() ? '\nNotes: ' + g('sectionNotePowerDynamics').value.trim() : ''}
 
 AFTERCARE
