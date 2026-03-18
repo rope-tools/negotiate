@@ -150,8 +150,8 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 <div class="headerbar">
   <h1>Scene Negotiation</h1>
   <div class="header-actions">
-    <button type="button" class="icon-btn" aria-label="About this tool" onclick="openInfoModal()">!</button>
-    <button type="button" class="icon-btn" aria-label="Show QR code" onclick="openQrModal()">🔳</button>
+    <button type="button" class="icon-btn" aria-label="About this tool" onclick="openInfoModal()">⚠️ Info</button>
+    <button type="button" class="icon-btn" aria-label="Show QR code" onclick="openQrModal()">🔳 QR</button>
   </div>
 </div>
 
@@ -944,9 +944,8 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 
 <div id="infoModal" class="modal-backdrop" onclick="if(event.target===this) closeModal('infoModal')">
   <div class="modal">
-    <h2>About this tool</h2>
-    <p>This page is a negotiation aid for discussing a specific scene. It helps capture preferences, limits, in-scene negotiation points, roles, positioning, touch, rope, impact, pain, communication, power dynamics, and aftercare.</p>
-    <p class="muted">Important: using this tool does not create consent by itself and does not transfer or remove responsibility for obtaining, checking, and respecting consent. Ongoing, informed, freely given consent still needs to be established and maintained between the people involved. By using this tool, you agree that the author(s) of the tool bear no responsibility or liability for any actions, interactions, or outcomes related to your play.</p>
+    <h2>Important Information</h2>
+    <p>This tool helps you plan a scene. It is not consent.</p><p></p><p>Keep communicating. Check in. People can change their mind at any time.</p><p></p><p>Do not rely on this checklist alone.</p><p></p><p>The author takes no responsibility for your actions or outcomes.</p>
     <div class="modal-actions">
       <button type="button" onclick="closeModal('infoModal')">Close</button>
     </div>
