@@ -399,7 +399,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 </details>
 
 <div class="btns" style="grid-template-columns:1fr 1fr">
-  <button onclick="copySummary()">Copy summary</button>
+  <button onclick="shareSummary()">Share summary</button>
   <button onclick="shareLink()">Share link</button>
 </div>
 
@@ -608,13 +608,25 @@ async function copyTextRobust(text){
   return true;
 }
 
-async function copySummary(){
+async function shareSummary(){
   try{
     const txt = generateSummary();
+    if (navigator.share) {
+      await navigator.share({
+        title: 'Scene negotiation summary',
+        text: txt
+      });
+      setStatus('Summary shared.');
+      return;
+    }
     await copyTextRobust(txt);
-    setStatus('Summary copied.');
+    setStatus('Share sheet unavailable — summary copied.');
   }catch(e){
-    setStatus('Could not copy automatically. Try opening this over http(s) or use a supported browser.');
+    if (e && e.name === 'AbortError'){
+      setStatus('Share cancelled.');
+      return;
+    }
+    setStatus('Could not share summary automatically.');
   }
 }
 
