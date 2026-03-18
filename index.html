@@ -407,25 +407,25 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 </details>
 
 <details>
-  <summary>Bunny Positions</summary>
+  <summary>Bottom Positions</summary>
   <div class="section">
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="bunnySeiza"><span>Seiza</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bunnySideSitting"><span>Side sitting</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bunnyNadu"><span>Nadu</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bunnyKneel"><span>Kneeling</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bunnySit"><span>Sitting</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bunnyStand"><span>Standing</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bunnyFloor"><span>Lying down</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bunnyChair"><span>Chair</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bunnyTable"><span>Table</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomSeiza"><span>Seiza</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomSideSitting"><span>Side sitting</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomNadu"><span>Nadu</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomKneel"><span>Kneeling</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomSit"><span>Sitting</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomStand"><span>Standing</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomFloor"><span>Lying down</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomChair"><span>Chair</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomTable"><span>Table</span></label>
     </div>
   </div>
 
     <div class="section">
-      <span class="section-note-toggle" onclick="toggleSectionNote('noteBunnyPositions')">Notes</span>
-      <div id="noteBunnyPositions" class="section-note-box">
-        <textarea id="sectionNoteBunnyPositions" placeholder="Optional notes for bunny positions"></textarea>
+      <span class="section-note-toggle" onclick="toggleSectionNote('noteBottomPositions')">Notes</span>
+      <div id="noteBottomPositions" class="section-note-box">
+        <textarea id="sectionNoteBottomPositions" placeholder="Optional notes for bunny positions"></textarea>
       </div>
     </div>
 
@@ -757,7 +757,7 @@ ${modeList(
 
 BUNNY POSITIONS
 ${modeList(
-  ['bunnySeiza','bunnySideSitting','bunnyNadu','bunnyKneel','bunnySit','bunnyStand','bunnyFloor','bunnyChair','bunnyTable'],
+  ['bottomSeiza','bottomSideSitting','bottomNadu','bottomKneel','bottomSit','bottomStand','bottomFloor','bottomChair','bottomTable'],
   ['Seiza','Side sitting','Nadu','Kneeling','Sitting','Standing','Lying down','Chair','Table']
 )}
 
@@ -803,7 +803,7 @@ ${[
   ['Touch','sectionNoteTouch'],
   ['Kiss / Lick / Bite','sectionNoteKissLickBite'],
   ['Impact','sectionNoteImpact'],
-  ['Bunny Positions','sectionNoteBunnyPositions'],
+  ['Bottom Positions','sectionNoteBottomPositions'],
   ['Top Position','sectionNoteTopPosition'],
   ['Talking','sectionNoteTalking'],
   ['Power Dynamics','sectionNotePowerDynamics'],
