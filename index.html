@@ -50,6 +50,26 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   .btns{grid-template-columns:1fr 1fr}
   .btns button:last-child{grid-column:1/-1}
 }
+
+.mode-input{display:none}
+.modebox{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:18px;
+  height:18px;
+  line-height:1;
+
+  border-radius:4px;
+  border:1px solid #555;
+  background:#151515;
+  font-size:12px;
+}
+.modebox.none{color:#777}
+.modebox.hard{background:#3a1212;border-color:#ff4d4d;color:#ff4d4d}
+.modebox.yes{background:#123a1f;border-color:#4dff88;color:#4dff88}
+.modebox.love{background:#12233a;border-color:#4da6ff;color:#4da6ff}
+
 </style>
 </head>
 <body>
@@ -87,42 +107,39 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 </div>
 
 
+<div style="font-size:12px;color:#aaa;margin-bottom:6px">
+✕ No &nbsp;&nbsp; ✓ Yes &nbsp;&nbsp; ♥ Love
+</div>
+
 <details open>
   <summary>Rope Placement</summary>
   <div class="section">
     <div class="checkbox-grid">
-      <label class="check"><input type="checkbox" id="ropeChest"><span>Chest</span></label>
-      <label class="check"><input type="checkbox" id="ropeHips"><span>Hips</span></label>
-      <label class="check"><input type="checkbox" id="ropeLegs"><span>Legs</span></label>
-      <label class="check"><input type="checkbox" id="ropeArms"><span>Arms</span></label>
-      <label class="check"><input type="checkbox" id="ropeHands"><span>Hands</span></label>
-      <label class="check"><input type="checkbox" id="ropeWrists"><span>Wrists</span></label>
-      <label class="check"><input type="checkbox" id="ropeFeet"><span>Feet</span></label>
-      <label class="check"><input type="checkbox" id="ropeNeck"><span>Neck</span></label>
-      <label class="check"><input type="checkbox" id="ropeFace"><span>Face</span></label>
-      <label class="check"><input type="checkbox" id="ropeCrotch"><span>Crotch rope</span></label>
-    </div>
-
-    <div class="rule"></div>
-
-    <div class="checkbox-grid">
-      <label class="check"><input type="checkbox" id="ropePartial"><span>Partial suspension</span></label>
-      <label class="check"><input type="checkbox" id="ropeFull"><span>Full suspension</span></label>
-      <label class="check"><input type="checkbox" id="ropeUplines"><span>Positional uplines</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeChest"><span>Chest</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeHips"><span>Hips</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeLegs"><span>Legs</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeArms"><span>Arms</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeHands"><span>Hands</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeWrists"><span>Wrists</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeFeet"><span>Feet</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeNeck"><span>Neck</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeFace"><span>Face</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeCrotch"><span>Crotch rope</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropePartial"><span>Partial suspension</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeFull"><span>Full suspension</span></label>
     </div>
   </div>
 </details>
-
 
 <details>
   <summary>Rope Style</summary>
   <div class="section">
     <div class="checkbox-grid">
-      <label class="check"><input type="checkbox" id="styleSomatic"><span>Somatic rope</span></label>
-      <label class="check"><input type="checkbox" id="styleLab"><span>Labbing / technical</span></label>
-      <label class="check"><input type="checkbox" id="styleTorment"><span>Torment rope (semenawa)</span></label>
-      <label class="check"><input type="checkbox" id="styleCaress"><span>Caress rope (aibunawa)</span></label>
-      <label class="check"><input type="checkbox" id="styleAesthetic"><span>Rope aesthetics</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="styleSomatic"><span>Somatic rope</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="styleLab"><span>Labbing / technical</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="styleTorment"><span>Torment rope (semenawa)</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="styleCaress"><span>Caress rope (aibunawa)</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="styleAesthetic"><span>Rope aesthetics</span></label>
     </div>
   </div>
 </details>
@@ -140,18 +157,18 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </select>
     </label>
     <div class="checkbox-grid">
-      <label class="check"><input type="checkbox" id="markChest"><span>Chest</span></label>
-      <label class="check"><input type="checkbox" id="markHips"><span>Hips</span></label>
-      <label class="check"><input type="checkbox" id="markLegs"><span>Legs</span></label>
-      <label class="check"><input type="checkbox" id="markArms"><span>Arms</span></label>
-      <label class="check"><input type="checkbox" id="markHands"><span>Hands</span></label>
-      <label class="check"><input type="checkbox" id="markWrists"><span>Wrists</span></label>
-      <label class="check"><input type="checkbox" id="markFeet"><span>Feet</span></label>
-      <label class="check"><input type="checkbox" id="markNeck"><span>Neck</span></label>
-      <label class="check"><input type="checkbox" id="markFace"><span>Face</span></label>
-      <label class="check"><input type="checkbox" id="markCrotch"><span>Crotch</span></label>
-      <label class="check"><input type="checkbox" id="markBack"><span>Back</span></label>
-      <label class="check"><input type="checkbox" id="markShoulders"><span>Shoulders</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markChest"><span>Chest</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markHips"><span>Hips</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markLegs"><span>Legs</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markArms"><span>Arms</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markHands"><span>Hands</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markWrists"><span>Wrists</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markFeet"><span>Feet</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markNeck"><span>Neck</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markFace"><span>Face</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markCrotch"><span>Crotch</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markBack"><span>Back</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markShoulders"><span>Shoulders</span></label>
     </div>
   </div>
 </details>
@@ -164,64 +181,64 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
         <div class="name">Back</div>
         <select id="touchBack"><option>None</option><option>Yes</option><option>Body manipulation only</option></select>
         <div class="sense-row">
-          <label class="sense-check"><input type="checkbox" id="touchBackLight"><span>Light sensation</span></label>
-          <label class="sense-check"><input type="checkbox" id="touchBackFirm"><span>Firm sensation</span></label>
+          <label class="sense-check"><input class="mode-input" type="checkbox" id="touchBackLight"><span>Light sensation</span></label>
+          <label class="sense-check"><input class="mode-input" type="checkbox" id="touchBackFirm"><span>Firm sensation</span></label>
         </div>
       </div>
       <div class="touch-card">
         <div class="name">Arms</div>
         <select id="touchArms"><option>None</option><option>Yes</option><option>Body manipulation only</option></select>
         <div class="sense-row">
-          <label class="sense-check"><input type="checkbox" id="touchArmsLight"><span>Light sensation</span></label>
-          <label class="sense-check"><input type="checkbox" id="touchArmsFirm"><span>Firm sensation</span></label>
+          <label class="sense-check"><input class="mode-input" type="checkbox" id="touchArmsLight"><span>Light sensation</span></label>
+          <label class="sense-check"><input class="mode-input" type="checkbox" id="touchArmsFirm"><span>Firm sensation</span></label>
         </div>
       </div>
       <div class="touch-card">
         <div class="name">Legs</div>
         <select id="touchLegs"><option>None</option><option>Yes</option><option>Body manipulation only</option></select>
         <div class="sense-row">
-          <label class="sense-check"><input type="checkbox" id="touchLegsLight"><span>Light sensation</span></label>
-          <label class="sense-check"><input type="checkbox" id="touchLegsFirm"><span>Firm sensation</span></label>
+          <label class="sense-check"><input class="mode-input" type="checkbox" id="touchLegsLight"><span>Light sensation</span></label>
+          <label class="sense-check"><input class="mode-input" type="checkbox" id="touchLegsFirm"><span>Firm sensation</span></label>
         </div>
       </div>
       <div class="touch-card">
         <div class="name">Hair</div>
         <select id="touchHair"><option>None</option><option>Yes</option><option>Body manipulation only</option></select>
         <div class="sense-row">
-          <label class="sense-check"><input type="checkbox" id="touchHairLight"><span>Light sensation</span></label>
-          <label class="sense-check"><input type="checkbox" id="touchHairFirm"><span>Firm sensation</span></label>
+          <label class="sense-check"><input class="mode-input" type="checkbox" id="touchHairLight"><span>Light sensation</span></label>
+          <label class="sense-check"><input class="mode-input" type="checkbox" id="touchHairFirm"><span>Firm sensation</span></label>
         </div>
       </div>
       <div class="touch-card">
         <div class="name">Face</div>
         <select id="touchFace"><option>None</option><option>Yes</option><option>Body manipulation only</option></select>
         <div class="sense-row">
-          <label class="sense-check"><input type="checkbox" id="touchFaceLight"><span>Light sensation</span></label>
-          <label class="sense-check"><input type="checkbox" id="touchFaceFirm"><span>Firm sensation</span></label>
+          <label class="sense-check"><input class="mode-input" type="checkbox" id="touchFaceLight"><span>Light sensation</span></label>
+          <label class="sense-check"><input class="mode-input" type="checkbox" id="touchFaceFirm"><span>Firm sensation</span></label>
         </div>
       </div>
       <div class="touch-card">
         <div class="name">Shoulders</div>
         <select id="touchShoulders"><option>None</option><option>Yes</option><option>Body manipulation only</option></select>
         <div class="sense-row">
-          <label class="sense-check"><input type="checkbox" id="touchShouldersLight"><span>Light sensation</span></label>
-          <label class="sense-check"><input type="checkbox" id="touchShouldersFirm"><span>Firm sensation</span></label>
+          <label class="sense-check"><input class="mode-input" type="checkbox" id="touchShouldersLight"><span>Light sensation</span></label>
+          <label class="sense-check"><input class="mode-input" type="checkbox" id="touchShouldersFirm"><span>Firm sensation</span></label>
         </div>
       </div>
       <div class="touch-card">
         <div class="name">Crotch</div>
         <select id="touchCrotch"><option>None</option><option>Yes</option><option>Body manipulation only</option></select>
         <div class="sense-row">
-          <label class="sense-check"><input type="checkbox" id="touchCrotchLight"><span>Light sensation</span></label>
-          <label class="sense-check"><input type="checkbox" id="touchCrotchFirm"><span>Firm sensation</span></label>
+          <label class="sense-check"><input class="mode-input" type="checkbox" id="touchCrotchLight"><span>Light sensation</span></label>
+          <label class="sense-check"><input class="mode-input" type="checkbox" id="touchCrotchFirm"><span>Firm sensation</span></label>
         </div>
       </div>
       <div class="touch-card">
         <div class="name">Bottom</div>
         <select id="touchBottom"><option>None</option><option>Yes</option><option>Body manipulation only</option></select>
         <div class="sense-row">
-          <label class="sense-check"><input type="checkbox" id="touchBottomLight"><span>Light sensation</span></label>
-          <label class="sense-check"><input type="checkbox" id="touchBottomFirm"><span>Firm sensation</span></label>
+          <label class="sense-check"><input class="mode-input" type="checkbox" id="touchBottomLight"><span>Light sensation</span></label>
+          <label class="sense-check"><input class="mode-input" type="checkbox" id="touchBottomFirm"><span>Firm sensation</span></label>
         </div>
       </div>
     </div>
@@ -233,44 +250,44 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   <div class="section">
     <div class="subhead">Kiss</div>
     <div class="checkbox-grid">
-      <label class="check"><input type="checkbox" id="kissMouth"><span>Mouth</span></label>
-      <label class="check"><input type="checkbox" id="kissNeck"><span>Neck</span></label>
-      <label class="check"><input type="checkbox" id="kissChest"><span>Chest</span></label>
-      <label class="check"><input type="checkbox" id="kissShoulders"><span>Shoulders</span></label>
-      <label class="check"><input type="checkbox" id="kissBack"><span>Back</span></label>
-      <label class="check"><input type="checkbox" id="kissLegs"><span>Legs</span></label>
-      <label class="check"><input type="checkbox" id="kissCrotch"><span>Crotch</span></label>
-      <label class="check"><input type="checkbox" id="kissBottom"><span>Bottom</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="kissMouth"><span>Mouth</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="kissNeck"><span>Neck</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="kissChest"><span>Chest</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="kissShoulders"><span>Shoulders</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="kissBack"><span>Back</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="kissLegs"><span>Legs</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="kissCrotch"><span>Crotch</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="kissBottom"><span>Bottom</span></label>
     </div>
     <div class="rule"></div>
     <div class="subhead">Lick</div>
     <div class="checkbox-grid">
-      <label class="check"><input type="checkbox" id="lickMouth"><span>Mouth</span></label>
-      <label class="check"><input type="checkbox" id="lickNeck"><span>Neck</span></label>
-      <label class="check"><input type="checkbox" id="lickChest"><span>Chest</span></label>
-      <label class="check"><input type="checkbox" id="lickShoulders"><span>Shoulders</span></label>
-      <label class="check"><input type="checkbox" id="lickBack"><span>Back</span></label>
-      <label class="check"><input type="checkbox" id="lickLegs"><span>Legs</span></label>
-      <label class="check"><input type="checkbox" id="lickCrotch"><span>Crotch</span></label>
-      <label class="check"><input type="checkbox" id="lickBottom"><span>Bottom</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lickMouth"><span>Mouth</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lickNeck"><span>Neck</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lickChest"><span>Chest</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lickShoulders"><span>Shoulders</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lickBack"><span>Back</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lickLegs"><span>Legs</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lickCrotch"><span>Crotch</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lickBottom"><span>Bottom</span></label>
     </div>
     <div class="rule"></div>
     <div class="subhead">Bite</div>
     <div class="checkbox-grid">
-      <label class="check"><input type="checkbox" id="biteMouth"><span>Mouth</span></label>
-      <label class="check"><input type="checkbox" id="biteNeck"><span>Neck</span></label>
-      <label class="check"><input type="checkbox" id="biteChest"><span>Chest</span></label>
-      <label class="check"><input type="checkbox" id="biteShoulders"><span>Shoulders</span></label>
-      <label class="check"><input type="checkbox" id="biteBack"><span>Back</span></label>
-      <label class="check"><input type="checkbox" id="biteLegs"><span>Legs</span></label>
-      <label class="check"><input type="checkbox" id="biteCrotch"><span>Crotch</span></label>
-      <label class="check"><input type="checkbox" id="biteBottom"><span>Bottom</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="biteMouth"><span>Mouth</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="biteNeck"><span>Neck</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="biteChest"><span>Chest</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="biteShoulders"><span>Shoulders</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="biteBack"><span>Back</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="biteLegs"><span>Legs</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="biteCrotch"><span>Crotch</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="biteBottom"><span>Bottom</span></label>
     </div>
     <div class="rule"></div>
     <div class="subhead">Proximity</div>
     <div class="checkbox-grid">
-      <label class="check"><input type="checkbox" id="proximityClose"><span>Close breath / proximity</span></label>
-      <label class="check"><input type="checkbox" id="lipBrush"><span>Lip brush</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="proximityClose"><span>Close breath / proximity</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lipBrush"><span>Lip brush</span></label>
     </div>
   </div>
 </details>
@@ -280,21 +297,21 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   <div class="section">
     <div class="subhead">Locations</div>
     <div class="checkbox-grid">
-      <label class="check"><input type="checkbox" id="impactButt"><span>Butt</span></label>
-      <label class="check"><input type="checkbox" id="impactThighs"><span>Thighs</span></label>
-      <label class="check"><input type="checkbox" id="impactBack"><span>Upper back</span></label>
-      <label class="check"><input type="checkbox" id="impactShoulders"><span>Shoulders</span></label>
-      <label class="check"><input type="checkbox" id="impactChest"><span>Chest</span></label>
-      <label class="check"><input type="checkbox" id="impactGroin"><span>Groin</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="impactButt"><span>Butt</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="impactThighs"><span>Thighs</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="impactBack"><span>Upper back</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="impactShoulders"><span>Shoulders</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="impactChest"><span>Chest</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="impactGroin"><span>Groin</span></label>
     </div>
     <div class="rule"></div>
     <div class="subhead">Implements</div>
     <div class="checkbox-grid">
-      <label class="check"><input type="checkbox" id="impactHand"><span>Hand</span></label>
-      <label class="check"><input type="checkbox" id="impactPaddle"><span>Paddle</span></label>
-      <label class="check"><input type="checkbox" id="impactFlogger"><span>Flogger</span></label>
-      <label class="check"><input type="checkbox" id="impactCrop"><span>Crop</span></label>
-      <label class="check"><input type="checkbox" id="impactRope"><span>Rope</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="impactHand"><span>Hand</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="impactPaddle"><span>Paddle</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="impactFlogger"><span>Flogger</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="impactCrop"><span>Crop</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="impactRope"><span>Rope</span></label>
     </div>
   </div>
 </details>
@@ -303,15 +320,15 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   <summary>Bunny Positions</summary>
   <div class="section">
     <div class="checkbox-grid">
-      <label class="check"><input type="checkbox" id="bunnySeiza"><span>Seiza</span></label>
-      <label class="check"><input type="checkbox" id="bunnySideSitting"><span>Side sitting</span></label>
-      <label class="check"><input type="checkbox" id="bunnyNadu"><span>Nadu</span></label>
-      <label class="check"><input type="checkbox" id="bunnyKneel"><span>Kneeling</span></label>
-      <label class="check"><input type="checkbox" id="bunnySit"><span>Sitting</span></label>
-      <label class="check"><input type="checkbox" id="bunnyStand"><span>Standing</span></label>
-      <label class="check"><input type="checkbox" id="bunnyFloor"><span>Lying down</span></label>
-      <label class="check"><input type="checkbox" id="bunnyChair"><span>Chair</span></label>
-      <label class="check"><input type="checkbox" id="bunnyTable"><span>Table</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bunnySeiza"><span>Seiza</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bunnySideSitting"><span>Side sitting</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bunnyNadu"><span>Nadu</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bunnyKneel"><span>Kneeling</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bunnySit"><span>Sitting</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bunnyStand"><span>Standing</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bunnyFloor"><span>Lying down</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bunnyChair"><span>Chair</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bunnyTable"><span>Table</span></label>
     </div>
   </div>
 </details>
@@ -321,18 +338,18 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   <div class="section">
     <div class="subhead">Directional position</div>
     <div class="checkbox-grid">
-      <label class="check"><input type="checkbox" id="topFront"><span>In front</span></label>
-      <label class="check"><input type="checkbox" id="topBehind"><span>Behind</span></label>
-      <label class="check"><input type="checkbox" id="topSide"><span>Side</span></label>
-      <label class="check"><input type="checkbox" id="topAbove"><span>Above / on top</span></label>
-      <label class="check"><input type="checkbox" id="topUnder"><span>Under</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="topFront"><span>In front</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="topBehind"><span>Behind</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="topSide"><span>Side</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="topAbove"><span>Above / on top</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="topUnder"><span>Under</span></label>
     </div>
     <div class="rule"></div>
     <div class="subhead">Distance</div>
     <div class="checkbox-grid">
-      <label class="check"><input type="checkbox" id="distClose"><span>Very close</span></label>
-      <label class="check"><input type="checkbox" id="distMid"><span>Moderate distance</span></label>
-      <label class="check"><input type="checkbox" id="distFar"><span>Distant</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="distClose"><span>Very close</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="distMid"><span>Moderate distance</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="distFar"><span>Distant</span></label>
     </div>
   </div>
 </details>
@@ -341,11 +358,11 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   <summary>Talking</summary>
   <div class="section">
     <div class="checkbox-grid">
-      <label class="check"><input type="checkbox" id="talkConversation"><span>Conversational</span></label>
-      <label class="check"><input type="checkbox" id="talkMinimal"><span>Minimal</span></label>
-      <label class="check"><input type="checkbox" id="talkInstructional"><span>Instructional</span></label>
-      <label class="check"><input type="checkbox" id="talkPlayful"><span>Playful</span></label>
-      <label class="check"><input type="checkbox" id="talkDirty"><span>Dirty talk</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="talkConversation"><span>Conversational</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="talkMinimal"><span>Minimal</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="talkInstructional"><span>Instructional</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="talkPlayful"><span>Playful</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="talkDirty"><span>Dirty talk</span></label>
     </div>
   </div>
 </details>
@@ -362,13 +379,13 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </select>
     </label>
     <div class="checkbox-grid">
-      <label class="check"><input type="checkbox" id="dynServiceTop"><span>Service (top)</span></label>
-      <label class="check"><input type="checkbox" id="dynServiceBottom"><span>Service (bottom)</span></label>
-      <label class="check"><input type="checkbox" id="dynOwnership"><span>Ownership</span></label>
-      <label class="check"><input type="checkbox" id="dynToy"><span>Toy</span></label>
-      <label class="check"><input type="checkbox" id="dynNurturing"><span>Nurturing</span></label>
-      <label class="check"><input type="checkbox" id="dynBrat"><span>Brat / brat tamer</span></label>
-      <label class="check"><input type="checkbox" id="dynDegrading"><span>Degrading</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynServiceTop"><span>Service (top)</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynServiceBottom"><span>Service (bottom)</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynOwnership"><span>Ownership</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynToy"><span>Toy</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynNurturing"><span>Nurturing</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynBrat"><span>Brat / brat tamer</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynDegrading"><span>Degrading</span></label>
     </div>
   </div>
 </details>
@@ -377,16 +394,16 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   <summary>Aftercare</summary>
   <div class="section">
     <div class="checkbox-grid">
-      <label class="check"><input type="checkbox" id="afterHug"><span>Hugs</span></label>
-      <label class="check"><input type="checkbox" id="afterCuddle"><span>Cuddles</span></label>
-      <label class="check"><input type="checkbox" id="afterBlanket"><span>Blanket</span></label>
-      <label class="check"><input type="checkbox" id="afterWater"><span>Water</span></label>
-      <label class="check"><input type="checkbox" id="afterSnacks"><span>Snacks</span></label>
-      <label class="check"><input type="checkbox" id="afterQuiet"><span>Quiet</span></label>
-      <label class="check"><input type="checkbox" id="afterTalk"><span>Talking</span></label>
-      <label class="check"><input type="checkbox" id="afterDebriefNight"><span>Debrief tonight</span></label>
-      <label class="check"><input type="checkbox" id="afterNextCheck"><span>Next-day check-in</span></label>
-      <label class="check"><input type="checkbox" id="afterNextDebrief"><span>Next-day debrief</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterHug"><span>Hugs</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterCuddle"><span>Cuddles</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterBlanket"><span>Blanket</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterWater"><span>Water</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterSnacks"><span>Snacks</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterQuiet"><span>Quiet</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterTalk"><span>Talking</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterDebriefNight"><span>Debrief tonight</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterNextCheck"><span>Next-day check-in</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterNextDebrief"><span>Next-day debrief</span></label>
     </div>
   </div>
 </details>
@@ -398,12 +415,13 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   </div>
 </details>
 
-<div class="btns" style="grid-template-columns:1fr 1fr">
-  <button onclick="shareSummary()">Share Summary</button>
-  <button onclick="shareLink()">Save / Share Preset</button>
+<div class="btns">
+  <button onclick="generateSummary()">Generate</button>
+  <button onclick="copySummary()">Copy</button>
+  <button onclick="shareLink()">Share link</button>
 </div>
 
-<div id="status" class="output" style="padding:8px;font-size:12px;color:#aaa">Ready.</div>
+<div id="out" class="output"></div>
 
 <script>
 function g(id){ return document.getElementById(id); }
@@ -458,14 +476,8 @@ function touchLine(area, base){
   return `${area}: ${mode}${extraText}`;
 }
 
-
-function setStatus(msg){
-  const el = g('status');
-  if (el) el.textContent = msg;
-}
-
 function generateSummary(){
-  return `SCENE NEGOTIATION
+  const txt = `SCENE NEGOTIATION
 
 Date: ${g('sceneDate').value}
 You: ${g('yourName').value || '—'}
@@ -475,14 +487,8 @@ Safeword: ${g('safeword').value || '—'}
 
 ROPE PLACEMENT
 ${checkedList(
-  ['ropeChest','ropeHips','ropeLegs','ropeArms','ropeHands','ropeWrists','ropeFeet','ropeNeck','ropeFace','ropeCrotch'],
-  ['Chest','Hips','Legs','Arms','Hands','Wrists','Feet','Neck','Face','Crotch rope']
-)}
-
-SUSPENSION / UPLINES
-${checkedList(
-  ['ropePartial','ropeFull','ropeUplines'],
-  ['Partial suspension','Full suspension','Positional uplines']
+  ['ropeChest','ropeHips','ropeLegs','ropeArms','ropeHands','ropeWrists','ropeFeet','ropeNeck','ropeFace','ropeCrotch','ropePartial','ropeFull'],
+  ['Chest','Hips','Legs','Arms','Hands','Wrists','Feet','Neck','Face','Crotch rope','Partial suspension','Full suspension']
 )}
 
 ROPE STYLE
@@ -581,56 +587,18 @@ ${checkedList(
 
 NOTES
 ${g('notes').value || 'None'}`;
+  g('out').textContent = txt;
 }
 
-async function copyTextRobust(text){
-  if (navigator.clipboard && window.isSecureContext) {
-    await navigator.clipboard.writeText(text);
-    return true;
-  }
-  const ta = document.createElement('textarea');
-  ta.value = text;
-  ta.setAttribute('readonly', '');
-  ta.style.position = 'fixed';
-  ta.style.top = '-9999px';
-  ta.style.left = '-9999px';
-  document.body.appendChild(ta);
-  ta.focus();
-  ta.select();
-  let ok = false;
-  try {
-    ok = document.execCommand('copy');
-  } catch(e) {
-    ok = false;
-  }
-  document.body.removeChild(ta);
-  if (!ok) throw new Error('copy failed');
-  return true;
-}
-
-async function shareSummary(){
+async function copySummary(){
   try{
-    const txt = generateSummary();
-    if (navigator.share) {
-      await navigator.share({
-        title: 'Scene negotiation summary',
-        text: txt
-      });
-      setStatus('Summary shared.');
-      return;
-    }
-    await copyTextRobust(txt);
-    setStatus('Share sheet unavailable — summary copied.');
+    await navigator.clipboard.writeText(g('out').textContent);
   }catch(e){
-    if (e && e.name === 'AbortError'){
-      setStatus('Share cancelled.');
-      return;
-    }
-    setStatus('Could not share summary automatically.');
+    alert('Copy failed on this browser.');
   }
 }
 
-function buildShareUrl(){
+function shareLink(){
   const defaults = defaultState();
   const p = new URLSearchParams();
 
@@ -649,40 +617,38 @@ function buildShareUrl(){
   });
 
   const base = location.origin + location.pathname;
-  return p.toString() ? (base + '?' + p.toString()) : base;
-}
-
-async function shareLink(){
-  const url = buildShareUrl();
-  try{
-    if (navigator.share) {
-      await navigator.share({
-        title: 'Scene negotiation',
-        text: 'Scene negotiation link',
-        url
-      });
-      setStatus('Shared.');
-      return;
-    }
-  }catch(e){
-    if (e && e.name === 'AbortError'){
-      setStatus('Share cancelled.');
-      return;
-    }
-  }
-
-  try{
-    await copyTextRobust(url);
-    setStatus('Link copied.');
-  }catch(e){
-    setStatus('Could not copy link automatically. Try opening this over http(s) or use a supported browser.');
-  }
+  g('out').textContent = p.toString() ? (base + '?' + p.toString()) : base;
 }
 
 window.onload = function(){
   applyStateFromUrl();
   setDefaultDate();
 };
+
+const modeCycle = {none:'yes', yes:'love', love:'hard', hard:'none'};
+const modeSymbol = {none:'', yes:'✓', love:'♥', hard:'✕'};
+const modeClass = {none:'none', yes:'yes', love:'love', hard:'hard'};
+
+function initModes(){
+ document.querySelectorAll('input.mode-input').forEach(el=>{
+   el.dataset.mode='none';
+   const box=document.createElement('span');
+   box.className='modebox none';
+   el.after(box);
+
+   el.parentElement.onclick=(e)=>{
+     e.preventDefault();
+     let m=el.dataset.mode;
+     m=modeCycle[m];
+     el.dataset.mode=m;
+     box.className='modebox '+modeClass[m];
+     box.textContent=modeSymbol[m];
+   };
+ });
+}
+
+window.addEventListener('load', initModes);
+
 </script>
 
 </body>
