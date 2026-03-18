@@ -876,6 +876,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
     <div class="checkbox-grid">
       <label class="check"><input class="mode-input" type="checkbox" id="afterHug"><span>Hugs</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="afterCuddle"><span>Cuddles</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterKiss"><span>Kissing</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="afterBlanket"><span>Blanket</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="afterWater"><span>Water</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="afterSnacks"><span>Snacks</span></label>
@@ -1202,8 +1203,8 @@ ${groupedModeList(
 
 AFTERCARE
 ${groupedModeList(
-  ['afterHug','afterCuddle','afterBlanket','afterWater','afterSnacks','afterQuiet','afterTalk','afterDebriefNight','afterNextCheck','afterNextDebrief'],
-  ['Hugs','Cuddles','Blanket','Water','Snacks','Quiet','Talking','Debrief tonight','Next-day check-in','Next-day debrief']
+  ['afterHug','afterCuddle','afterKiss','afterBlanket','afterWater','afterSnacks','afterQuiet','afterTalk','afterDebriefNight','afterNextCheck','afterNextDebrief'],
+  ['Hugs','Cuddles','Kissing','Blanket','Water','Snacks','Quiet','Talking','Debrief tonight','Next-day check-in','Next-day debrief']
 )}${g('sectionNoteAftercare') && g('sectionNoteAftercare').value.trim() ? '\nNotes: ' + g('sectionNoteAftercare').value.trim() : ''}
 
 ADDITIONAL INFORMATION
