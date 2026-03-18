@@ -78,6 +78,26 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 .modebox.yes{background:#123a1f;border-color:#4dff88;color:#4dff88}
 .modebox.love{background:#12233a;border-color:#4da6ff;color:#4da6ff}
 
+
+.section-note-toggle{
+  font-size:12px;
+  color:var(--muted);
+  text-decoration:underline;
+  cursor:pointer;
+  display:inline-block;
+  margin-top:8px;
+}
+.section-note-box{
+  display:none;
+  margin-top:6px;
+}
+.section-note-box.open{
+  display:block;
+}
+.section-note-box textarea{
+  min-height:58px;
+}
+
 </style>
 </head>
 <body>
@@ -137,6 +157,14 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="ropeFull"><span>Full suspension</span></label>
     </div>
   </div>
+
+    <div class="section">
+      <span class="section-note-toggle" onclick="toggleSectionNote('noteRopePlacement')">Notes</span>
+      <div id="noteRopePlacement" class="section-note-box">
+        <textarea id="sectionNoteRopePlacement" placeholder="Optional notes for rope placement"></textarea>
+      </div>
+    </div>
+
 </details>
 
 <details>
@@ -150,6 +178,14 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="styleAesthetic"><span>Rope aesthetics</span></label>
     </div>
   </div>
+
+    <div class="section">
+      <span class="section-note-toggle" onclick="toggleSectionNote('noteRopeStyle')">Notes</span>
+      <div id="noteRopeStyle" class="section-note-box">
+        <textarea id="sectionNoteRopeStyle" placeholder="Optional notes for rope style"></textarea>
+      </div>
+    </div>
+
 </details>
 
 <details>
@@ -179,6 +215,14 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="markShoulders"><span>Shoulders</span></label>
     </div>
   </div>
+
+    <div class="section">
+      <span class="section-note-toggle" onclick="toggleSectionNote('noteRopeMarks')">Notes</span>
+      <div id="noteRopeMarks" class="section-note-box">
+        <textarea id="sectionNoteRopeMarks" placeholder="Optional notes for rope marks"></textarea>
+      </div>
+    </div>
+
 </details>
 
 <details>
@@ -251,6 +295,14 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
     </div>
   </div>
+
+    <div class="section">
+      <span class="section-note-toggle" onclick="toggleSectionNote('noteTouch')">Notes</span>
+      <div id="noteTouch" class="section-note-box">
+        <textarea id="sectionNoteTouch" placeholder="Optional notes for touch"></textarea>
+      </div>
+    </div>
+
 </details>
 
 <details>
@@ -298,6 +350,14 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="lipBrush"><span>Lip brush</span></label>
     </div>
   </div>
+
+    <div class="section">
+      <span class="section-note-toggle" onclick="toggleSectionNote('noteKissLickBite')">Notes</span>
+      <div id="noteKissLickBite" class="section-note-box">
+        <textarea id="sectionNoteKissLickBite" placeholder="Optional notes for kiss / lick / bite"></textarea>
+      </div>
+    </div>
+
 </details>
 
 <details>
@@ -322,6 +382,14 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="impactRope"><span>Rope</span></label>
     </div>
   </div>
+
+    <div class="section">
+      <span class="section-note-toggle" onclick="toggleSectionNote('noteImpact')">Notes</span>
+      <div id="noteImpact" class="section-note-box">
+        <textarea id="sectionNoteImpact" placeholder="Optional notes for impact"></textarea>
+      </div>
+    </div>
+
 </details>
 
 <details>
@@ -339,6 +407,14 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="bunnyTable"><span>Table</span></label>
     </div>
   </div>
+
+    <div class="section">
+      <span class="section-note-toggle" onclick="toggleSectionNote('noteBunnyPositions')">Notes</span>
+      <div id="noteBunnyPositions" class="section-note-box">
+        <textarea id="sectionNoteBunnyPositions" placeholder="Optional notes for bunny positions"></textarea>
+      </div>
+    </div>
+
 </details>
 
 <details>
@@ -360,6 +436,14 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="distFar"><span>Distant</span></label>
     </div>
   </div>
+
+    <div class="section">
+      <span class="section-note-toggle" onclick="toggleSectionNote('noteTopPosition')">Notes</span>
+      <div id="noteTopPosition" class="section-note-box">
+        <textarea id="sectionNoteTopPosition" placeholder="Optional notes for top position"></textarea>
+      </div>
+    </div>
+
 </details>
 
 <details>
@@ -373,6 +457,14 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="talkDirty"><span>Dirty talk</span></label>
     </div>
   </div>
+
+    <div class="section">
+      <span class="section-note-toggle" onclick="toggleSectionNote('noteTalking')">Notes</span>
+      <div id="noteTalking" class="section-note-box">
+        <textarea id="sectionNoteTalking" placeholder="Optional notes for talking"></textarea>
+      </div>
+    </div>
+
 </details>
 
 <details>
@@ -396,6 +488,14 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="dynDegrading"><span>Degrading</span></label>
     </div>
   </div>
+
+    <div class="section">
+      <span class="section-note-toggle" onclick="toggleSectionNote('notePowerDynamics')">Notes</span>
+      <div id="notePowerDynamics" class="section-note-box">
+        <textarea id="sectionNotePowerDynamics" placeholder="Optional notes for power dynamics"></textarea>
+      </div>
+    </div>
+
 </details>
 
 <details>
@@ -414,10 +514,18 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="afterNextDebrief"><span>Next-day debrief</span></label>
     </div>
   </div>
+
+    <div class="section">
+      <span class="section-note-toggle" onclick="toggleSectionNote('noteAftercare')">Notes</span>
+      <div id="noteAftercare" class="section-note-box">
+        <textarea id="sectionNoteAftercare" placeholder="Optional notes for aftercare"></textarea>
+      </div>
+    </div>
+
 </details>
 
 <details>
-  <summary>Notes</summary>
+  <summary>Additional Information</summary>
   <div class="section">
     <textarea id="notes"></textarea>
   </div>
@@ -433,6 +541,11 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 
 <script>
 function g(id){ return document.getElementById(id); }
+
+function toggleSectionNote(id){
+  const el = g(id);
+  if (el) el.classList.toggle('open');
+}
 
 const checkboxIds = Array.from(document.querySelectorAll('input[type="checkbox"]')).map(el => el.id);
 const textIds = Array.from(document.querySelectorAll('input[type="text"], input[type="date"], textarea')).map(el => el.id);
@@ -466,6 +579,11 @@ function applyStateFromUrl(){
     if (!el) return;
     if (el.type === 'checkbox') el.checked = (v === 'true');
     else el.value = v;
+    if (k.startsWith('sectionNote') && v) {
+      const boxId = 'note' + k.replace('sectionNote','');
+      const box = g(boxId);
+      if (box) box.classList.add('open');
+    }
   });
 }
 
@@ -593,8 +711,23 @@ ${checkedList(
   ['Hugs','Cuddles','Blanket','Water','Snacks','Quiet','Talking','Debrief tonight','Next-day check-in','Next-day debrief']
 )}
 
-NOTES
-${g('notes').value || 'None'}`;
+ADDITIONAL INFORMATION
+${g('notes').value || 'None'}
+
+SECTION NOTES
+${[
+  ['Rope Placement','sectionNoteRopePlacement'],
+  ['Rope Style','sectionNoteRopeStyle'],
+  ['Rope Marks','sectionNoteRopeMarks'],
+  ['Touch','sectionNoteTouch'],
+  ['Kiss / Lick / Bite','sectionNoteKissLickBite'],
+  ['Impact','sectionNoteImpact'],
+  ['Bunny Positions','sectionNoteBunnyPositions'],
+  ['Top Position','sectionNoteTopPosition'],
+  ['Talking','sectionNoteTalking'],
+  ['Power Dynamics','sectionNotePowerDynamics'],
+  ['Aftercare','sectionNoteAftercare']
+].map(([label,id]) => g(id) && g(id).value.trim() ? (label + ': ' + g(id).value.trim()) : '').filter(Boolean).join('\n') || 'None'}`;
   g('out').textContent = txt;
 }
 
