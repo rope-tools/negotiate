@@ -97,6 +97,28 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   min-height:58px;
 }
 
+
+.cycle-select{display:none !important}
+.cycle-btn{
+  width:100%;
+  min-height:36px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:var(--field);
+  color:var(--text);
+  padding:7px 8px;
+  font-size:13px;
+  text-align:left;
+}
+.cycle-btn.negotiate{background:#222;color:#eee}
+.cycle-btn.no{background:#3a1212;border-color:#ff4d4d;color:#ffb0b0}
+.cycle-btn.yes{background:#2e2914;border-color:#f0c14b;color:#ffefb3}
+.cycle-btn.love{background:#12233a;border-color:#4da6ff;color:#cfe4ff}
+.cycle-btn.low{background:#123a1f;border-color:#4dff88;color:#c8ffd9}
+.cycle-btn.medium{background:#2e2914;border-color:#f0c14b;color:#ffefb3}
+.cycle-btn.high{background:#2b1638;border-color:#c77dff;color:#ecd9ff}
+.cycle-btn:active{transform:scale(0.99)}
+
 </style>
 </head>
 <body>
@@ -259,83 +281,91 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
     <div class="touch-grid">
       <div class="touch-card">
         <div class="name">Back</div>
-        <select id="touchBack">
+        <select id="touchBack" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>None</option>
           <option>Rope/Body Manipulation Only</option>
           <option>Light Contact</option>
           <option>Firm Contact</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="touchBack"></button>
       </div>
       <div class="touch-card">
         <div class="name">Arms</div>
-        <select id="touchArms">
+        <select id="touchArms" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>None</option>
           <option>Rope/Body Manipulation Only</option>
           <option>Light Contact</option>
           <option>Firm Contact</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="touchArms"></button>
       </div>
       <div class="touch-card">
         <div class="name">Legs</div>
-        <select id="touchLegs">
+        <select id="touchLegs" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>None</option>
           <option>Rope/Body Manipulation Only</option>
           <option>Light Contact</option>
           <option>Firm Contact</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="touchLegs"></button>
       </div>
       <div class="touch-card">
         <div class="name">Hair</div>
-        <select id="touchHair">
+        <select id="touchHair" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>None</option>
           <option>Rope/Body Manipulation Only</option>
           <option>Light Contact</option>
           <option>Firm Contact</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="touchHair"></button>
       </div>
       <div class="touch-card">
         <div class="name">Face</div>
-        <select id="touchFace">
+        <select id="touchFace" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>None</option>
           <option>Rope/Body Manipulation Only</option>
           <option>Light Contact</option>
           <option>Firm Contact</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="touchFace"></button>
       </div>
       <div class="touch-card">
         <div class="name">Shoulders</div>
-        <select id="touchShoulders">
+        <select id="touchShoulders" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>None</option>
           <option>Rope/Body Manipulation Only</option>
           <option>Light Contact</option>
           <option>Firm Contact</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="touchShoulders"></button>
       </div>
       <div class="touch-card">
         <div class="name">Crotch</div>
-        <select id="touchCrotch">
+        <select id="touchCrotch" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>None</option>
           <option>Rope/Body Manipulation Only</option>
           <option>Light Contact</option>
           <option>Firm Contact</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="touchCrotch"></button>
       </div>
       <div class="touch-card">
         <div class="name">Bottom</div>
-        <select id="touchBottom">
+        <select id="touchBottom" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>None</option>
           <option>Rope/Body Manipulation Only</option>
           <option>Light Contact</option>
           <option>Firm Contact</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="touchBottom"></button>
       </div>
     </div>
     <div class="section">
@@ -409,134 +439,146 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 
       <div class="touch-card">
         <div class="name">Face</div>
-        <select id="painFace">
+        <select id="painFace" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="painFace"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Neck</div>
-        <select id="painNeck">
+        <select id="painNeck" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="painNeck"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Shoulders</div>
-        <select id="painShoulders">
+        <select id="painShoulders" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="painShoulders"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Chest</div>
-        <select id="painChest">
+        <select id="painChest" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="painChest"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Back</div>
-        <select id="painBack">
+        <select id="painBack" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="painBack"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Arms</div>
-        <select id="painArms">
+        <select id="painArms" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="painArms"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Hands</div>
-        <select id="painHands">
+        <select id="painHands" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="painHands"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Hips</div>
-        <select id="painHips">
+        <select id="painHips" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="painHips"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Crotch</div>
-        <select id="painCrotch">
+        <select id="painCrotch" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="painCrotch"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Bottom</div>
-        <select id="painBottom">
+        <select id="painBottom" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="painBottom"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Legs</div>
-        <select id="painLegs">
+        <select id="painLegs" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="painLegs"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Feet</div>
-        <select id="painFeet">
+        <select id="painFeet" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="painFeet"></button>
       </div>
 
     </div>
@@ -556,134 +598,146 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 
       <div class="touch-card">
         <div class="name">Face</div>
-        <select id="impactFace">
+        <select id="impactFace" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Light</option>
           <option>Moderate</option>
           <option>Heavy</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="impactFace"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Neck</div>
-        <select id="impactNeck">
+        <select id="impactNeck" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Light</option>
           <option>Moderate</option>
           <option>Heavy</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="impactNeck"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Shoulders</div>
-        <select id="impactShoulders">
+        <select id="impactShoulders" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Light</option>
           <option>Moderate</option>
           <option>Heavy</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="impactShoulders"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Chest</div>
-        <select id="impactChest">
+        <select id="impactChest" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Light</option>
           <option>Moderate</option>
           <option>Heavy</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="impactChest"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Back</div>
-        <select id="impactBack">
+        <select id="impactBack" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Light</option>
           <option>Moderate</option>
           <option>Heavy</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="impactBack"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Arms</div>
-        <select id="impactArms">
+        <select id="impactArms" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Light</option>
           <option>Moderate</option>
           <option>Heavy</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="impactArms"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Hands</div>
-        <select id="impactHands">
+        <select id="impactHands" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Light</option>
           <option>Moderate</option>
           <option>Heavy</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="impactHands"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Hips</div>
-        <select id="impactHips">
+        <select id="impactHips" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Light</option>
           <option>Moderate</option>
           <option>Heavy</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="impactHips"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Crotch</div>
-        <select id="impactCrotch">
+        <select id="impactCrotch" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Light</option>
           <option>Moderate</option>
           <option>Heavy</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="impactCrotch"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Bottom</div>
-        <select id="impactBottom">
+        <select id="impactBottom" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Light</option>
           <option>Moderate</option>
           <option>Heavy</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="impactBottom"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Legs</div>
-        <select id="impactLegs">
+        <select id="impactLegs" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Light</option>
           <option>Moderate</option>
           <option>Heavy</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="impactLegs"></button>
       </div>
 
       <div class="touch-card">
         <div class="name">Feet</div>
-        <select id="impactFeet">
+        <select id="impactFeet" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Light</option>
           <option>Moderate</option>
           <option>Heavy</option>
         </select>
+        <button type="button" class="cycle-btn" data-select-id="impactFeet"></button>
       </div>
 
     </div>
@@ -1377,10 +1431,58 @@ function shareLink(){
 
 
 
+
+function cycleClassForValue(id, value){
+  if (value === 'Negotiate In Scene') return 'negotiate';
+  if (value === 'None' || value === 'No') return 'no';
+
+  if (id.startsWith('touch')) {
+    if (value === 'Rope/Body Manipulation Only') return 'yes';   // yellow
+    if (value === 'Light Contact') return 'low';                 // green
+    if (value === 'Firm Contact') return 'love';                 // blue
+  }
+
+  if (id.startsWith('pain')) {
+    if (value === 'Low') return 'low';                           // green
+    if (value === 'Medium') return 'medium';                     // yellow
+    if (value === 'High') return 'high';                         // purple
+  }
+
+  if (id.startsWith('impact')) {
+    if (value === 'Light') return 'low';                         // green
+    if (value === 'Moderate') return 'medium';                   // yellow
+    if (value === 'Heavy') return 'high';                        // purple
+  }
+
+  return 'negotiate';
+}
+
+function syncCycleButton(selectEl){
+  const btn = document.querySelector('.cycle-btn[data-select-id="' + selectEl.id + '"]');
+  if (!btn) return;
+  const val = selectEl.value;
+  btn.textContent = val;
+  btn.className = 'cycle-btn ' + cycleClassForValue(selectEl.id, val);
+}
+
+function initCycleButtons(){
+  document.querySelectorAll('select.cycle-select').forEach(selectEl => {
+    syncCycleButton(selectEl);
+    const btn = document.querySelector('.cycle-btn[data-select-id="' + selectEl.id + '"]');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const idx = selectEl.selectedIndex;
+      selectEl.selectedIndex = (idx + 1) % selectEl.options.length;
+      syncCycleButton(selectEl);
+    });
+  });
+}
+
 window.onload = function(){
   applyStateFromUrl();
   setDefaultDate();
   initModes();
+  initCycleButtons();
 };
 
 </script>
