@@ -849,8 +849,8 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 </details>
 
 <div class="btns" style="grid-template-columns:1fr 1fr">
-  <button onclick="shareSummary()">📄 Share Summary</button>
-  <button onclick="shareLink()">🔗 Save / Share Preset</button>
+  <button onclick="directShareSummary()">📄 Share Summary</button>
+  <button onclick="directShareLink()">🔗 Save / Share Preset</button>
 </div>
 
 <div id="status" class="output" style="padding:8px;font-size:12px;color:#aaa">Ready.</div>
@@ -1102,7 +1102,7 @@ ${groupedSelectList([
   ['Arms','impactArms'],
   ['Hands','impactHands'],
   ['Hips','impactHips'],
-  ['Crotch','impactGroin'],
+  ['Crotch','impactCrotch'],
   ['Bottom','impactBottom'],
   ['Legs','impactLegs'],
   ['Feet','impactFeet']
@@ -1218,6 +1218,89 @@ function buildShareUrl(){
   return p.toString() ? (base + '?' + p.toString()) : base;
 }
 
+
+
+function directShareSummary(){
+  let txt = '';
+  try {
+    setStatus('Preparing summary...');
+    txt = generateSummary();
+  } catch (e) {
+    setStatus('Summary error: ' + (e && e.message ? e.message : 'unknown error'));
+    return;
+  }
+
+  if (navigator.share) {
+    setStatus('Opening share options...');
+    navigator.share({
+      title: 'Scene negotiation summary',
+      text: txt
+    }).then(() => {
+      setStatus('Summary shared.');
+    }).catch((e) => {
+      if (e && e.name === 'AbortError') {
+        setStatus('Share cancelled.');
+        return;
+      }
+      try {
+        copyTextImmediate(txt);
+        setStatus('Summary copied.');
+      } catch (_e) {
+        setStatus('Could not share summary.');
+      }
+    });
+    return;
+  }
+
+  try {
+    if (copyTextImmediate(txt)) setStatus('Summary copied.');
+    else setStatus('Could not copy summary.');
+  } catch (e) {
+    setStatus('Could not copy summary.');
+  }
+}
+
+function directShareLink(){
+  let url = '';
+  try {
+    setStatus('Preparing preset link...');
+    url = buildShareUrl();
+  } catch (e) {
+    setStatus('Preset error: ' + (e && e.message ? e.message : 'unknown error'));
+    return;
+  }
+
+  if (navigator.share) {
+    setStatus('Opening share options...');
+    navigator.share({
+      title: 'Scene preset',
+      text: 'Scene negotiation preset',
+      url: url
+    }).then(() => {
+      setStatus('Preset shared.');
+    }).catch((e) => {
+      if (e && e.name === 'AbortError') {
+        setStatus('Share cancelled.');
+        return;
+      }
+      try {
+        copyTextImmediate(url);
+        setStatus('Preset link copied.');
+      } catch (_e) {
+        setStatus('Could not share preset link.');
+      }
+    });
+    return;
+  }
+
+  try {
+    if (copyTextImmediate(url)) setStatus('Preset link copied.');
+    else setStatus('Could not copy preset link.');
+  } catch (e) {
+    setStatus('Could not copy preset link.');
+  }
+}
+
 function shareSummary(){
   const txt = generateSummary();
   setStatus('Preparing summary...');
@@ -1239,7 +1322,7 @@ function shareSummary(){
         setStatus('Summary copied.');
       }).catch(() => {
         if (copyTextImmediate(txt)) setStatus('Summary copied.');
-        else setStatus('Could not share or copy summary.');
+        else { setStatus('Could not share or copy summary.'); window.prompt('Copy summary manually:', txt); }
       });
     });
     return;
@@ -1250,7 +1333,7 @@ function shareSummary(){
     setStatus('Summary copied.');
   }).catch(() => {
     if (copyTextImmediate(txt)) setStatus('Summary copied.');
-    else setStatus('Could not share or copy summary.');
+    else { setStatus('Could not share or copy summary.'); window.prompt('Copy summary manually:', txt); }
   });
 }
 
@@ -1276,7 +1359,7 @@ function shareLink(){
         setStatus('Preset link copied.');
       }).catch(() => {
         if (copyTextImmediate(url)) setStatus('Preset link copied.');
-        else setStatus('Could not share or copy preset link.');
+        else { setStatus('Could not share or copy preset link.'); window.prompt('Copy preset link manually:', url); }
       });
     });
     return;
@@ -1287,7 +1370,7 @@ function shareLink(){
     setStatus('Preset link copied.');
   }).catch(() => {
     if (copyTextImmediate(url)) setStatus('Preset link copied.');
-    else setStatus('Could not share or copy preset link.');
+    else { setStatus('Could not share or copy preset link.'); window.prompt('Copy preset link manually:', url); }
   });
 }
 
