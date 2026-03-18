@@ -119,11 +119,41 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 .cycle-btn.high{background:#2b1638;border-color:#c77dff;color:#ecd9ff}
 .cycle-btn:active{transform:scale(0.99)}
 
+
+.headerbar{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px}
+.header-actions{display:flex;gap:6px;align-items:center;flex-shrink:0}
+.icon-btn{
+  width:32px;height:32px;border:1px solid var(--border);border-radius:999px;
+  background:var(--field);color:var(--text);display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;padding:0
+}
+.modal-backdrop{
+  position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;
+  padding:12px;z-index:50
+}
+.modal-backdrop.open{display:flex}
+.modal{
+  width:min(100%,420px);background:var(--panel);border:1px solid #2a2a2a;border-radius:12px;padding:12px
+}
+.modal h2{margin:0 0 8px;font-size:16px}
+.modal p{margin:0 0 10px;font-size:13px;line-height:1.35;color:var(--text)}
+.modal .muted{color:var(--muted)}
+.modal .qr-wrap{display:flex;justify-content:center;margin:10px 0}
+.modal .qr-wrap img{width:220px;height:220px;max-width:100%;background:#fff;border-radius:8px}
+.modal-actions{display:flex;justify-content:flex-end;margin-top:8px}
+.modal-actions button{padding:9px 12px}
+
 </style>
 </head>
 <body>
 
-<h1>Scene Negotiation</h1>
+<div class="headerbar">
+  <h1>Scene Negotiation</h1>
+  <div class="header-actions">
+    <button type="button" class="icon-btn" aria-label="About this tool" onclick="openInfoModal()">!</button>
+    <button type="button" class="icon-btn" aria-label="Show QR code" onclick="openQrModal()">🔳</button>
+  </div>
+</div>
 
 <div class="top">
   <label class="field">
@@ -911,6 +941,32 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 
 <div id="status" class="output" style="padding:8px;font-size:12px;color:#aaa">Ready.</div>
 
+
+<div id="infoModal" class="modal-backdrop" onclick="if(event.target===this) closeModal('infoModal')">
+  <div class="modal">
+    <h2>About this tool</h2>
+    <p>This page is a negotiation aid for discussing a specific scene. It helps capture preferences, limits, in-scene negotiation points, roles, positioning, touch, rope, impact, pain, communication, power dynamics, and aftercare.</p>
+    <p class="muted">Important: using this tool does not create consent by itself and does not transfer or remove responsibility for obtaining, checking, and respecting consent. Ongoing, informed, freely given consent still needs to be established and maintained between the people involved. By using this tool, you agree that the author(s) of the tool bear no responsibility or liability for any actions, interactions, or outcomes related to your play.</p>
+    <div class="modal-actions">
+      <button type="button" onclick="closeModal('infoModal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="qrModal" class="modal-backdrop" onclick="if(event.target===this) closeModal('qrModal')">
+  <div class="modal">
+    <h2>Negotiation QR code</h2>
+    <p class="muted">Scan this QR code to open this negotiation page.</p>
+    <div class="qr-wrap">
+      <img id="qrImage" alt="QR code for main page">
+    </div>
+    <p id="qrUrlText" class="muted" style="word-break:break-all"></p>
+    <div class="modal-actions">
+      <button type="button" onclick="closeModal('qrModal')">Close</button>
+    </div>
+  </div>
+</div>
+
 <script>
 
 function g(id){ return document.getElementById(id); }
@@ -1060,6 +1116,33 @@ function groupedSelectList(pairs){
   if (no.length) parts.push('No: ' + no.join(', '));
   if (negotiate.length) parts.push('Negotiate In Scene: ' + negotiate.join(', '));
   return parts.length ? parts.join('\n') : 'No negotiation / in scene';
+}
+
+
+function closeModal(id){
+  const el = g(id);
+  if (el) el.classList.remove('open');
+}
+
+function mainPageUrl(){
+  return location.origin + location.pathname;
+}
+
+function openInfoModal(){
+  const el = g('infoModal');
+  if (el) el.classList.add('open');
+}
+
+function openQrModal(){
+  const url = mainPageUrl();
+  const img = g('qrImage');
+  const txt = g('qrUrlText');
+  if (img) {
+    img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=' + encodeURIComponent(url);
+  }
+  if (txt) txt.textContent = url;
+  const el = g('qrModal');
+  if (el) el.classList.add('open');
 }
 
 function generateSummary(){
