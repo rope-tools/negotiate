@@ -137,26 +137,35 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 
 
 
-<div style="font-size:12px;margin-bottom:6px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-  <span style="display:flex;align-items:center;gap:4px">
-    <span class="modebox hard">✕</span><span style="color:#ff4d4d">No</span>
-  </span>
-  <span style="display:flex;align-items:center;gap:4px">
-    <span class="modebox yes">✓</span><span style="color:#4dff88">Yes</span>
-  </span>
-  <span style="display:flex;align-items:center;gap:4px">
-    <span class="modebox love">♥</span><span style="color:#4da6ff">Love</span>
-  </span>
-  <span style="display:flex;align-items:center;gap:4px">
-    <span class="modebox none"></span><span style="color:#aaa">In-scene</span>
-  </span>
-</div>
 
-<details open>
-  <summary>Rope Placement</summary>
+
+
+<details open style="border:1px solid #555;border-radius:8px;margin-bottom:8px;background:#0f0f0f">
+  <summary style="padding:8px 10px;font-weight:600;color:#ccc">Legend</summary>
+  <div style="padding:8px 10px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:12px">
+    <span style="display:flex;align-items:center;gap:4px">
+      <span class="modebox hard">✕</span><span style="color:#ff4d4d">No</span>
+    </span>
+    <span style="display:flex;align-items:center;gap:4px">
+      <span class="modebox yes">✓</span><span style="color:#4dff88">Yes</span>
+    </span>
+    <span style="display:flex;align-items:center;gap:4px">
+      <span class="modebox love">♥</span><span style="color:#4da6ff">Love</span>
+    </span>
+    <span style="display:flex;align-items:center;gap:4px">
+      <span class="modebox none"></span><span style="color:#aaa">In-scene</span>
+    </span>
+  </div>
+</details>
+
+<details>
+  <summary>🪢 Rope Placement</summary>
   <div class="section">
+    <div class="subhead">Rope Placement</div>
     <div class="checkbox-grid">
       <label class="check"><input class="mode-input" type="checkbox" id="ropeChest"><span>Chest</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeBack"><span>Back</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeShoulders"><span>Shoulders</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="ropeHips"><span>Hips</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="ropeLegs"><span>Legs</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="ropeArms"><span>Arms</span></label>
@@ -166,22 +175,27 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="ropeNeck"><span>Neck</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="ropeFace"><span>Face</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="ropeCrotch"><span>Crotch rope</span></label>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="subhead">Suspension / Uplines</div>
+    <div class="checkbox-grid">
       <label class="check"><input class="mode-input" type="checkbox" id="ropePartial"><span>Partial suspension</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="ropeFull"><span>Full suspension</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeUplines"><span>Positional uplines</span></label>
     </div>
-  </div>
-
     <div class="section">
       <span class="section-note-toggle" onclick="toggleSectionNote('noteRopePlacement')">Notes</span>
       <div id="noteRopePlacement" class="section-note-box">
         <textarea id="sectionNoteRopePlacement" placeholder="Optional notes for rope placement"></textarea>
       </div>
     </div>
-
+  </div>
 </details>
 
 <details>
-  <summary>Rope Style</summary>
+  <summary>🎨 Rope Style</summary>
   <div class="section">
     <div class="checkbox-grid">
       <label class="check"><input class="mode-input" type="checkbox" id="styleSomatic"><span>Somatic rope</span></label>
@@ -203,7 +217,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 </details>
 
 <details>
-  <summary>Rope Marks</summary>
+  <summary>🟣 Rope Marks</summary>
   <div class="section">
     <label class="field" style="margin-bottom:8px">
       <span>Mark tolerance</span>
@@ -240,7 +254,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 </details>
 
 <details>
-  <summary>Touch</summary>
+  <summary>✋ Touch</summary>
   <div class="section">
     <div class="touch-grid">
       <div class="touch-card">
@@ -320,7 +334,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 </details>
 
 <details>
-  <summary>Kiss / Lick / Bite</summary>
+  <summary>💋 Kiss / Lick / Bite</summary>
   <div class="section">
     <div class="subhead">Kiss</div>
     <div class="checkbox-grid">
@@ -375,19 +389,263 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 </details>
 
 <details>
-  <summary>Impact</summary>
+  <summary>⚡ Pain</summary>
   <div class="section">
-    <div class="subhead">Locations</div>
-    <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="impactButt"><span>Butt</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="impactThighs"><span>Thighs</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="impactBack"><span>Upper back</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="impactShoulders"><span>Shoulders</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="impactChest"><span>Chest</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="impactGroin"><span>Groin</span></label>
+    <div class="touch-grid">
+
+      <div class="touch-card">
+        <div class="name">Face</div>
+        <select id="painFace">
+          <option>No</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Neck</div>
+        <select id="painNeck">
+          <option>No</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Shoulders</div>
+        <select id="painShoulders">
+          <option>No</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Chest</div>
+        <select id="painChest">
+          <option>No</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Back</div>
+        <select id="painBack">
+          <option>No</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Arms</div>
+        <select id="painArms">
+          <option>No</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Hands</div>
+        <select id="painHands">
+          <option>No</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Hips</div>
+        <select id="painHips">
+          <option>No</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Crotch</div>
+        <select id="painCrotch">
+          <option>No</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Bottom</div>
+        <select id="painBottom">
+          <option>No</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Legs</div>
+        <select id="painLegs">
+          <option>No</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Feet</div>
+        <select id="painFeet">
+          <option>No</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </div>
+
     </div>
+  </div>
+</details>
+
+<details>
+  <summary>💥 Impact</summary>
+  <div class="section">
+    <div class="touch-grid">
+
+      <div class="touch-card">
+        <div class="name">Face</div>
+        <select id="impactFace">
+          <option>No</option>
+          <option>Light</option>
+          <option>Moderate</option>
+          <option>Heavy</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Neck</div>
+        <select id="impactNeck">
+          <option>No</option>
+          <option>Light</option>
+          <option>Moderate</option>
+          <option>Heavy</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Shoulders</div>
+        <select id="impactShoulders">
+          <option>No</option>
+          <option>Light</option>
+          <option>Moderate</option>
+          <option>Heavy</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Chest</div>
+        <select id="impactChest">
+          <option>No</option>
+          <option>Light</option>
+          <option>Moderate</option>
+          <option>Heavy</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Back</div>
+        <select id="impactBack">
+          <option>No</option>
+          <option>Light</option>
+          <option>Moderate</option>
+          <option>Heavy</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Arms</div>
+        <select id="impactArms">
+          <option>No</option>
+          <option>Light</option>
+          <option>Moderate</option>
+          <option>Heavy</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Hands</div>
+        <select id="impactHands">
+          <option>No</option>
+          <option>Light</option>
+          <option>Moderate</option>
+          <option>Heavy</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Hips</div>
+        <select id="impactHips">
+          <option>No</option>
+          <option>Light</option>
+          <option>Moderate</option>
+          <option>Heavy</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Crotch</div>
+        <select id="impactCrotch">
+          <option>No</option>
+          <option>Light</option>
+          <option>Moderate</option>
+          <option>Heavy</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Bottom</div>
+        <select id="impactBottom">
+          <option>No</option>
+          <option>Light</option>
+          <option>Moderate</option>
+          <option>Heavy</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Legs</div>
+        <select id="impactLegs">
+          <option>No</option>
+          <option>Light</option>
+          <option>Moderate</option>
+          <option>Heavy</option>
+        </select>
+      </div>
+
+      <div class="touch-card">
+        <div class="name">Feet</div>
+        <select id="impactFeet">
+          <option>No</option>
+          <option>Light</option>
+          <option>Moderate</option>
+          <option>Heavy</option>
+        </select>
+      </div>
+
+    </div>
+
     <div class="rule"></div>
-    <div class="subhead">Implements</div>
+
     <div class="checkbox-grid">
       <label class="check"><input class="mode-input" type="checkbox" id="impactHand"><span>Hand</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="impactPaddle"><span>Paddle</span></label>
@@ -396,18 +654,11 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="impactRope"><span>Rope</span></label>
     </div>
   </div>
-
-    <div class="section">
-      <span class="section-note-toggle" onclick="toggleSectionNote('noteImpact')">Notes</span>
-      <div id="noteImpact" class="section-note-box">
-        <textarea id="sectionNoteImpact" placeholder="Optional notes for impact"></textarea>
-      </div>
-    </div>
-
 </details>
 
+
 <details>
-  <summary>Bottom Positions</summary>
+  <summary>🧎 Bottom Positions</summary>
   <div class="section">
     <div class="checkbox-grid">
       <label class="check"><input class="mode-input" type="checkbox" id="bottomSeiza"><span>Seiza</span></label>
@@ -432,7 +683,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 </details>
 
 <details>
-  <summary>Top Position</summary>
+  <summary>🧭 Top Position</summary>
   <div class="section">
     <div class="subhead">Directional position</div>
     <div class="checkbox-grid">
@@ -461,7 +712,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 </details>
 
 <details>
-  <summary>Talking</summary>
+  <summary>💬 Talking</summary>
   <div class="section">
     <div class="checkbox-grid">
       <label class="check"><input class="mode-input" type="checkbox" id="talkConversation"><span>Conversational</span></label>
@@ -482,7 +733,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 </details>
 
 <details>
-  <summary>Power Dynamics</summary>
+  <summary>⚖️ Power Dynamics</summary>
   <div class="section">
     <label class="field" style="margin-bottom:8px">
       <span>Intensity</span>
@@ -514,7 +765,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 </details>
 
 <details>
-  <summary>Aftercare</summary>
+  <summary>🫂 Aftercare</summary>
   <div class="section">
     <div class="checkbox-grid">
       <label class="check"><input class="mode-input" type="checkbox" id="afterHug"><span>Hugs</span></label>
@@ -540,7 +791,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 </details>
 
 <details>
-  <summary>Additional Information</summary>
+  <summary>📝 Additional Information</summary>
   <div class="section">
     <textarea id="notes"></textarea>
   </div>
@@ -686,8 +937,8 @@ Safeword: ${g('safeword').value || '—'}
 
 ROPE PLACEMENT
 ${modeList(
-  ['ropeChest','ropeHips','ropeLegs','ropeArms','ropeHands','ropeWrists','ropeFeet','ropeNeck','ropeFace','ropeCrotch'],
-  ['Chest','Hips','Legs','Arms','Hands','Wrists','Feet','Neck','Face','Crotch rope']
+  ['ropeChest','ropeBack','ropeShoulders','ropeHips','ropeLegs','ropeArms','ropeHands','ropeWrists','ropeFeet','ropeNeck','ropeFace','ropeCrotch'],
+  ['Chest','Back','Shoulders','Hips','Legs','Arms','Hands','Wrists','Feet','Neck','Face','Crotch rope']
 )}
 
 SUSPENSION / UPLINES
@@ -743,10 +994,13 @@ ${modeList(
   ['Close breath / proximity','Lip brush']
 )}
 
-IMPACT LOCATIONS
+IMPACT
+${['Face','Neck','Shoulders','Chest','Back','Arms','Hands','Hips','Crotch','Bottom','Legs','Feet'].map(a=>a+': '+g('impact'+a).value).join('\n')}
+
+IMPACT IMPLEMENTS
 ${modeList(
-  ['impactButt','impactThighs','impactBack','impactShoulders','impactChest','impactGroin'],
-  ['Butt','Thighs','Upper back','Shoulders','Chest','Groin']
+  ['impactShoulders','impactChest','impactBack','impactArms','impactHands','impactHips','impactGroin','impactBottom','impactLegs','impactFeet'],
+  ['Butt','Thighs','Back','Shoulders','Chest','Groin']
 )}
 
 IMPACT IMPLEMENTS
@@ -785,6 +1039,9 @@ ${modeList(
   ['dynServiceTop','dynServiceBottom','dynOwnership','dynToy','dynNurturing','dynBrat','dynDegrading','dynManhandling'],
   ['Service (top)','Service (bottom)','Ownership','Toy','Nurturing','Brat / brat tamer','Degrading','Manhandling']
 )}
+
+PAIN
+${['Face','Neck','Shoulders','Chest','Back','Arms','Hands','Hips','Crotch','Bottom','Legs','Feet'].map(a=>a+': '+g('pain'+a).value).join('\n')}
 
 AFTERCARE
 ${modeList(
