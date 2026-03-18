@@ -143,6 +143,34 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 .modal-actions{display:flex;justify-content:flex-end;margin-top:8px}
 .modal-actions button{padding:9px 12px}
 
+
+.helptext{
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: #777;
+  text-underline-offset: 2px;
+  cursor: help;
+}
+.help-bubble{
+  position:absolute;
+  z-index:9999;
+  max-width:min(240px, calc(100vw - 24px));
+  background:#101010;
+  color:#eee;
+  border:1px solid #3a3a3a;
+  border-radius:8px;
+  padding:8px 10px;
+  font-size:12px;
+  line-height:1.35;
+  box-shadow:0 10px 24px rgba(0,0,0,.35);
+  display:none;
+  pointer-events:none;
+}
+.help-bubble.open{display:block}
+.touch-card .name.helptext{
+  display:inline;
+}
+
 </style>
 </head>
 <body>
@@ -215,27 +243,27 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   <div class="section">
     <div class="subhead">Rope Placement</div>
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="ropeChest"><span>Chest</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="ropeBack"><span>Back</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="ropeShoulders"><span>Shoulders</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="ropeHips"><span>Hips</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="ropeLegs"><span>Legs</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="ropeArms"><span>Arms</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="ropeHands"><span>Hands</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="ropeWrists"><span>Wrists</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="ropeFeet"><span>Feet</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="ropeNeck"><span>Neck</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="ropeFace"><span>Face</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="ropeCrotch"><span>Crotch rope</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeChest"><span class="helptext" data-help="Across or around the chest.">Chest</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeBack"><span class="helptext" data-help="Across or around the back.">Back</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeShoulders"><span class="helptext" data-help="Across or around the shoulders.">Shoulders</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeHips"><span class="helptext" data-help="Across or around the hips.">Hips</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeLegs"><span class="helptext" data-help="On the upper or lower legs.">Legs</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeArms"><span class="helptext" data-help="On the upper or lower arms.">Arms</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeHands"><span class="helptext" data-help="On the hands or fingers.">Hands</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeWrists"><span class="helptext" data-help="Around or securing the wrists.">Wrists</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeFeet"><span class="helptext" data-help="On the feet or ankles.">Feet</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeNeck"><span class="helptext" data-help="At or around the neck area.">Neck</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeFace"><span class="helptext" data-help="On or near the face.">Face</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeCrotch"><span class="helptext" data-help="Rope passing through or around the crotch.">Crotch rope</span></label>
     </div>
 
     <div class="rule"></div>
 
     <div class="subhead">Suspension / Uplines</div>
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="ropePartial"><span>Partial suspension</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="ropeFull"><span>Full suspension</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="ropeUplines"><span>Positional uplines</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropePartial"><span class="helptext" data-help="Some weight is held by rope while part of the body still stays supported.">Partial suspension</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeFull"><span class="helptext" data-help="All body weight is held by rope with no support from the floor or furniture.">Full suspension</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeUplines"><span class="helptext" data-help="Support lines used to change posture or shape without taking full body weight.">Positional uplines</span></label>
     </div>
     <div class="section">
       <span class="section-note-toggle" onclick="toggleSectionNote('noteRopePlacement')">Notes</span>
@@ -250,12 +278,12 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   <summary>🎨 Rope Style</summary>
   <div class="section">
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="styleSomatic"><span>Somatic rope</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="styleLab"><span>Labbing / technical</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="styleTorment"><span>Torment rope (semenawa)</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="styleCaress"><span>Caress rope (aibunawa)</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="styleAesthetic"><span>Rope aesthetics</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="styleErotic"><span>Erotic rope</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="styleSomatic"><span class="helptext" data-help="Rope focused on body awareness, sensation, and internal experience.">Somatic rope</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="styleLab"><span class="helptext" data-help="Rope focused on technique, structure, and testing forms.">Labbing / technical</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="styleTorment"><span class="helptext" data-help="Rope intended to create stress, intensity, or emotional pressure.">Torment rope (semenawa)</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="styleCaress"><span class="helptext" data-help="Rope focused on comfort, closeness, and pleasant sensation.">Caress rope (aibunawa)</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="styleAesthetic"><span class="helptext" data-help="Rope chosen mainly for visual effect and shape.">Rope aesthetics</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="styleErotic"><span class="helptext" data-help="Rope intended to support erotic or sexual energy.">Erotic rope</span></label>
     </div>
   </div>
 
@@ -281,18 +309,18 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </select>
     </label>
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="markChest"><span>Chest</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="markHips"><span>Hips</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="markLegs"><span>Legs</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="markArms"><span>Arms</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="markHands"><span>Hands</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="markWrists"><span>Wrists</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="markFeet"><span>Feet</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="markNeck"><span>Neck</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="markFace"><span>Face</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="markCrotch"><span>Crotch</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="markBack"><span>Back</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="markShoulders"><span>Shoulders</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markChest"><span class="helptext" data-help="Across or around the chest.">Chest</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markHips"><span class="helptext" data-help="Across or around the hips.">Hips</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markLegs"><span class="helptext" data-help="On the upper or lower legs.">Legs</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markArms"><span class="helptext" data-help="On the upper or lower arms.">Arms</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markHands"><span class="helptext" data-help="On the hands or fingers.">Hands</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markWrists"><span class="helptext" data-help="Around or securing the wrists.">Wrists</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markFeet"><span class="helptext" data-help="On the feet or ankles.">Feet</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markNeck"><span class="helptext" data-help="At or around the neck area.">Neck</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markFace"><span class="helptext" data-help="On or near the face.">Face</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markCrotch"><span class="helptext" data-help="The genital area.">Crotch</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markBack"><span class="helptext" data-help="Across or around the back.">Back</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markShoulders"><span class="helptext" data-help="Across or around the shoulders.">Shoulders</span></label>
     </div>
   </div>
 
@@ -310,7 +338,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   <div class="section">
     <div class="touch-grid">
       <div class="touch-card">
-        <div class="name">Back</div>
+        <div class="name helptext" data-help="Across or around the back.">Back</div>
         <select id="touchBack" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>None</option>
@@ -321,7 +349,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
         <button type="button" class="cycle-btn" data-select-id="touchBack"></button>
       </div>
       <div class="touch-card">
-        <div class="name">Arms</div>
+        <div class="name helptext" data-help="On the upper or lower arms.">Arms</div>
         <select id="touchArms" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>None</option>
@@ -332,7 +360,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
         <button type="button" class="cycle-btn" data-select-id="touchArms"></button>
       </div>
       <div class="touch-card">
-        <div class="name">Legs</div>
+        <div class="name helptext" data-help="On the upper or lower legs.">Legs</div>
         <select id="touchLegs" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>None</option>
@@ -343,7 +371,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
         <button type="button" class="cycle-btn" data-select-id="touchLegs"></button>
       </div>
       <div class="touch-card">
-        <div class="name">Hair</div>
+        <div class="name helptext" data-help="Hair pulling, holding, or stroking.">Hair</div>
         <select id="touchHair" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>None</option>
@@ -354,7 +382,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
         <button type="button" class="cycle-btn" data-select-id="touchHair"></button>
       </div>
       <div class="touch-card">
-        <div class="name">Face</div>
+        <div class="name helptext" data-help="On or near the face.">Face</div>
         <select id="touchFace" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>None</option>
@@ -365,7 +393,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
         <button type="button" class="cycle-btn" data-select-id="touchFace"></button>
       </div>
       <div class="touch-card">
-        <div class="name">Shoulders</div>
+        <div class="name helptext" data-help="Across or around the shoulders.">Shoulders</div>
         <select id="touchShoulders" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>None</option>
@@ -376,7 +404,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
         <button type="button" class="cycle-btn" data-select-id="touchShoulders"></button>
       </div>
       <div class="touch-card">
-        <div class="name">Crotch</div>
+        <div class="name helptext" data-help="The genital area.">Crotch</div>
         <select id="touchCrotch" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>None</option>
@@ -387,7 +415,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
         <button type="button" class="cycle-btn" data-select-id="touchCrotch"></button>
       </div>
       <div class="touch-card">
-        <div class="name">Bottom</div>
+        <div class="name helptext" data-help="The buttocks.">Bottom</div>
         <select id="touchBottom" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>None</option>
@@ -412,44 +440,44 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   <div class="section">
     <div class="subhead">Kiss</div>
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="kissMouth"><span>Mouth</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="kissNeck"><span>Neck</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="kissChest"><span>Chest</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="kissShoulders"><span>Shoulders</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="kissBack"><span>Back</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="kissLegs"><span>Legs</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="kissCrotch"><span>Crotch</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="kissBottom"><span>Bottom</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="kissMouth"><span class="helptext" data-help="The lips, mouth, or around the mouth.">Mouth</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="kissNeck"><span class="helptext" data-help="At or around the neck area.">Neck</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="kissChest"><span class="helptext" data-help="Across or around the chest.">Chest</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="kissShoulders"><span class="helptext" data-help="Across or around the shoulders.">Shoulders</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="kissBack"><span class="helptext" data-help="Across or around the back.">Back</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="kissLegs"><span class="helptext" data-help="On the upper or lower legs.">Legs</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="kissCrotch"><span class="helptext" data-help="The genital area.">Crotch</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="kissBottom"><span class="helptext" data-help="The buttocks.">Bottom</span></label>
     </div>
     <div class="rule"></div>
     <div class="subhead">Lick</div>
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="lickMouth"><span>Mouth</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="lickNeck"><span>Neck</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="lickChest"><span>Chest</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="lickShoulders"><span>Shoulders</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="lickBack"><span>Back</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="lickLegs"><span>Legs</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="lickCrotch"><span>Crotch</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="lickBottom"><span>Bottom</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lickMouth"><span class="helptext" data-help="The lips, mouth, or around the mouth.">Mouth</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lickNeck"><span class="helptext" data-help="At or around the neck area.">Neck</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lickChest"><span class="helptext" data-help="Across or around the chest.">Chest</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lickShoulders"><span class="helptext" data-help="Across or around the shoulders.">Shoulders</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lickBack"><span class="helptext" data-help="Across or around the back.">Back</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lickLegs"><span class="helptext" data-help="On the upper or lower legs.">Legs</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lickCrotch"><span class="helptext" data-help="The genital area.">Crotch</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lickBottom"><span class="helptext" data-help="The buttocks.">Bottom</span></label>
     </div>
     <div class="rule"></div>
     <div class="subhead">Bite</div>
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="biteMouth"><span>Mouth</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="biteNeck"><span>Neck</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="biteChest"><span>Chest</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="biteShoulders"><span>Shoulders</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="biteBack"><span>Back</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="biteLegs"><span>Legs</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="biteCrotch"><span>Crotch</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="biteBottom"><span>Bottom</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="biteMouth"><span class="helptext" data-help="The lips, mouth, or around the mouth.">Mouth</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="biteNeck"><span class="helptext" data-help="At or around the neck area.">Neck</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="biteChest"><span class="helptext" data-help="Across or around the chest.">Chest</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="biteShoulders"><span class="helptext" data-help="Across or around the shoulders.">Shoulders</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="biteBack"><span class="helptext" data-help="Across or around the back.">Back</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="biteLegs"><span class="helptext" data-help="On the upper or lower legs.">Legs</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="biteCrotch"><span class="helptext" data-help="The genital area.">Crotch</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="biteBottom"><span class="helptext" data-help="The buttocks.">Bottom</span></label>
     </div>
     <div class="rule"></div>
     <div class="subhead">Proximity</div>
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="proximityClose"><span>Close breath / proximity</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="lipBrush"><span>Lip brush</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="proximityClose"><span class="helptext" data-help="Breath or face kept very close without necessarily touching.">Close breath / proximity</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="lipBrush"><span class="helptext" data-help="Brief, light contact of lips without a full kiss.">Lip brush</span></label>
     </div>
   </div>
 
@@ -468,7 +496,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
     <div class="touch-grid">
 
       <div class="touch-card">
-        <div class="name">Face</div>
+        <div class="name helptext" data-help="On or near the face.">Face</div>
         <select id="painFace" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -480,7 +508,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Neck</div>
+        <div class="name helptext" data-help="At or around the neck area.">Neck</div>
         <select id="painNeck" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -492,7 +520,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Shoulders</div>
+        <div class="name helptext" data-help="Across or around the shoulders.">Shoulders</div>
         <select id="painShoulders" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -504,7 +532,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Chest</div>
+        <div class="name helptext" data-help="Across or around the chest.">Chest</div>
         <select id="painChest" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -516,7 +544,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Back</div>
+        <div class="name helptext" data-help="Across or around the back.">Back</div>
         <select id="painBack" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -528,7 +556,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Arms</div>
+        <div class="name helptext" data-help="On the upper or lower arms.">Arms</div>
         <select id="painArms" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -540,7 +568,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Hands</div>
+        <div class="name helptext" data-help="On the hands or fingers.">Hands</div>
         <select id="painHands" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -552,7 +580,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Hips</div>
+        <div class="name helptext" data-help="Across or around the hips.">Hips</div>
         <select id="painHips" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -564,7 +592,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Crotch</div>
+        <div class="name helptext" data-help="The genital area.">Crotch</div>
         <select id="painCrotch" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -576,7 +604,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Bottom</div>
+        <div class="name helptext" data-help="The buttocks.">Bottom</div>
         <select id="painBottom" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -588,7 +616,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Legs</div>
+        <div class="name helptext" data-help="On the upper or lower legs.">Legs</div>
         <select id="painLegs" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -600,7 +628,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Feet</div>
+        <div class="name helptext" data-help="On the feet or ankles.">Feet</div>
         <select id="painFeet" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -627,7 +655,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
     <div class="touch-grid">
 
       <div class="touch-card">
-        <div class="name">Face</div>
+        <div class="name helptext" data-help="On or near the face.">Face</div>
         <select id="impactFace" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -639,7 +667,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Neck</div>
+        <div class="name helptext" data-help="At or around the neck area.">Neck</div>
         <select id="impactNeck" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -651,7 +679,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Shoulders</div>
+        <div class="name helptext" data-help="Across or around the shoulders.">Shoulders</div>
         <select id="impactShoulders" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -663,7 +691,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Chest</div>
+        <div class="name helptext" data-help="Across or around the chest.">Chest</div>
         <select id="impactChest" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -675,7 +703,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Back</div>
+        <div class="name helptext" data-help="Across or around the back.">Back</div>
         <select id="impactBack" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -687,7 +715,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Arms</div>
+        <div class="name helptext" data-help="On the upper or lower arms.">Arms</div>
         <select id="impactArms" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -699,7 +727,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Hands</div>
+        <div class="name helptext" data-help="On the hands or fingers.">Hands</div>
         <select id="impactHands" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -711,7 +739,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Hips</div>
+        <div class="name helptext" data-help="Across or around the hips.">Hips</div>
         <select id="impactHips" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -723,7 +751,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Crotch</div>
+        <div class="name helptext" data-help="The genital area.">Crotch</div>
         <select id="impactCrotch" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -735,7 +763,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Bottom</div>
+        <div class="name helptext" data-help="The buttocks.">Bottom</div>
         <select id="impactBottom" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -747,7 +775,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Legs</div>
+        <div class="name helptext" data-help="On the upper or lower legs.">Legs</div>
         <select id="impactLegs" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -759,7 +787,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name">Feet</div>
+        <div class="name helptext" data-help="On the feet or ankles.">Feet</div>
         <select id="impactFeet" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
@@ -775,11 +803,11 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
     <div class="rule"></div>
 
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="impactHand"><span>Hand</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="impactPaddle"><span>Paddle</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="impactFlogger"><span>Flogger</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="impactCrop"><span>Crop</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="impactRope"><span>Rope</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="impactHand"><span class="helptext" data-help="Impact or touch delivered by hand.">Hand</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="impactPaddle"><span class="helptext" data-help="Flat impact toy with a broad surface.">Paddle</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="impactFlogger"><span class="helptext" data-help="Multi-tailed impact toy for thuddy or stingy sensation.">Flogger</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="impactCrop"><span class="helptext" data-help="Slim impact toy with a focused tip.">Crop</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="impactRope"><span class="helptext" data-help="Rope used as an implement rather than only for tying.">Rope</span></label>
     </div>
   </div>
     <div class="section">
@@ -795,15 +823,15 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   <summary>🧎 Bottom Positions</summary>
   <div class="section">
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="bottomSeiza"><span>Seiza</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bottomSideSitting"><span>Side sitting</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bottomNadu"><span>Nadu</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bottomKneel"><span>Kneeling</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bottomSit"><span>Sitting</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bottomStand"><span>Standing</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bottomFloor"><span>Lying down</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bottomChair"><span>Chair</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bottomTable"><span>Table</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomSeiza"><span class="helptext" data-help="Kneeling upright while sitting back on the heels.">Seiza</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomSideSitting"><span class="helptext" data-help="Sitting with the legs folded to one side.">Side sitting</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomNadu"><span class="helptext" data-help="Kneeling with the knees apart and hips open.">Nadu</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomKneel"><span class="helptext" data-help="Resting upright on the knees.">Kneeling</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomSit"><span class="helptext" data-help="Seated upright or relaxed.">Sitting</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomStand"><span class="helptext" data-help="Upright on the feet.">Standing</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomFloor"><span class="helptext" data-help="Resting flat or reclined on a surface.">Lying down</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomChair"><span class="helptext" data-help="Positioned on or against a chair.">Chair</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomTable"><span class="helptext" data-help="Positioned on or against a table.">Table</span></label>
     </div>
   </div>
 
@@ -821,18 +849,18 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   <div class="section">
     <div class="subhead">Directional position</div>
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="topFront"><span>In front</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="topBehind"><span>Behind</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="topSide"><span>Side</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="topAbove"><span>Above / on top</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="topUnder"><span>Under</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="topFront"><span class="helptext" data-help="Top positioned facing the bottom from the front.">In front</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="topBehind"><span class="helptext" data-help="Top positioned behind the bottom, facing their back.">Behind</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="topSide"><span class="helptext" data-help="Top positioned to one side of the bottom.">Side</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="topAbove"><span class="helptext" data-help="Top physically over or on top of the bottom.">Above / on top</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="topUnder"><span class="helptext" data-help="Top positioned underneath the bottom’s body or line.">Under</span></label>
     </div>
     <div class="rule"></div>
     <div class="subhead">Distance</div>
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="distClose"><span>Very close</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="distMid"><span>Moderate distance</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="distFar"><span>Distant</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="distClose"><span class="helptext" data-help="Bodies are touching or within immediate reach.">Very close</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="distMid"><span class="helptext" data-help="Within reach, but not in constant contact.">Moderate distance</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="distFar"><span class="helptext" data-help="Kept farther away and out of immediate reach.">Distant</span></label>
     </div>
   </div>
 
@@ -849,11 +877,11 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   <summary>💬 Talking</summary>
   <div class="section">
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="talkConversation"><span>Conversational</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="talkMinimal"><span>Minimal</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="talkInstructional"><span>Instructional</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="talkPlayful"><span>Playful</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="talkDirty"><span>Dirty talk</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="talkConversation"><span class="helptext" data-help="Normal back-and-forth talking during the scene.">Conversational</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="talkMinimal"><span class="helptext" data-help="Very little talking during the scene.">Minimal</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="talkInstructional"><span class="helptext" data-help="Direct guidance, commands, or practical direction.">Instructional</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="talkPlayful"><span class="helptext" data-help="Light, teasing, or joking language.">Playful</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="talkDirty"><span class="helptext" data-help="Explicit or suggestive sexual language.">Dirty talk</span></label>
     </div>
   </div>
 
@@ -879,15 +907,15 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </select>
     </label>
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="dynServiceTop"><span>Service (top)</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="dynServiceBottom"><span>Service (bottom)</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="dynOwnership"><span>Ownership</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="dynToy"><span>Toy</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="dynNurturingTop"><span>Nurturing (top)</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="dynNurturingBottom"><span>Nurturing (bottom)</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="dynBrat"><span>Brat / brat tamer</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="dynDegrading"><span>Degrading</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="dynManhandling"><span>Manhandling</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynServiceTop"><span class="helptext" data-help="A dynamic where the top is serving the bottom.">Service (top)</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynServiceBottom"><span class="helptext" data-help="A dynamic where the bottom is serving the top.">Service (bottom)</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynOwnership"><span class="helptext" data-help="A dynamic involving possession, belonging, or control.">Ownership</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynToy"><span class="helptext" data-help="Being treated as an object for use or play.">Toy</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynNurturingTop"><span class="helptext" data-help="Care, reassurance, or guidance offered by the top.">Nurturing (top)</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynNurturingBottom"><span class="helptext" data-help="Care, reassurance, or emotional tending offered by the bottom.">Nurturing (bottom)</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynBrat"><span class="helptext" data-help="Playful resistance and the dynamic of handling it.">Brat / brat tamer</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynDegrading"><span class="helptext" data-help="Play involving humiliation, insult, or reduction.">Degrading</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="dynManhandling"><span class="helptext" data-help="Forceful physical handling or movement.">Manhandling</span></label>
     </div>
   </div>
 
@@ -904,17 +932,17 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   <summary>🫂 Aftercare</summary>
   <div class="section">
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="afterHug"><span>Hugs</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="afterCuddle"><span>Cuddles</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="afterKiss"><span>Kissing</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="afterBlanket"><span>Blanket</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="afterWater"><span>Water</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="afterSnacks"><span>Snacks</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="afterQuiet"><span>Quiet</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="afterTalk"><span>Talking</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="afterDebriefNight"><span>Debrief tonight</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="afterNextCheck"><span>Next-day check-in</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="afterNextDebrief"><span>Next-day debrief</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterHug"><span class="helptext" data-help="Physical comforting embrace after the scene.">Hugs</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterCuddle"><span class="helptext" data-help="Close, gentle holding after the scene.">Cuddles</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterKiss"><span class="helptext" data-help="Affectionate kissing after the scene.">Kissing</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterBlanket"><span class="helptext" data-help="Warmth or covering for comfort after the scene.">Blanket</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterWater"><span class="helptext" data-help="Offer hydration after the scene.">Water</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterSnacks"><span class="helptext" data-help="Offer light food after the scene.">Snacks</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterQuiet"><span class="helptext" data-help="Low stimulation and calm recovery time.">Quiet</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterTalk"><span class="helptext" data-help="Casual conversation after the scene.">Talking</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterDebriefNight"><span class="helptext" data-help="Talk through the scene later the same day.">Debrief tonight</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterNextCheck"><span class="helptext" data-help="A brief follow-up the next day.">Next-day check-in</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="afterNextDebrief"><span class="helptext" data-help="A fuller conversation about the scene the next day.">Next-day debrief</span></label>
     </div>
   </div>
 
@@ -966,6 +994,8 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   </div>
 </div>
 
+
+<div id="helpBubble" class="help-bubble" role="tooltip"><div id="helpBubbleText"></div></div>
 <script>
 
 function g(id){ return document.getElementById(id); }
@@ -1562,11 +1592,69 @@ function initCycleButtons(){
   });
 }
 
+
+
+function closeHelpBubble(){
+  const b = g('helpBubble');
+  if (b) b.classList.remove('open');
+}
+
+function openHelpBubbleFor(el){
+  const bubble = g('helpBubble');
+  const text = g('helpBubbleText');
+  if (!bubble || !text || !el) return;
+
+  text.textContent = el.dataset.help || '';
+  bubble.classList.add('open');
+
+  const rect = el.getBoundingClientRect();
+  const bw = bubble.offsetWidth || 220;
+  const bh = bubble.offsetHeight || 60;
+
+  let left = window.scrollX + rect.left;
+  left = Math.max(12 + window.scrollX, Math.min(left, window.scrollX + window.innerWidth - bw - 12));
+
+  let top = window.scrollY + rect.bottom + 6;
+  if (top + bh > window.scrollY + window.innerHeight - 12) {
+    top = window.scrollY + rect.top - bh - 6;
+  }
+  top = Math.max(window.scrollY + 12, top);
+
+  bubble.style.left = left + 'px';
+  bubble.style.top = top + 'px';
+}
+
+function initHelpBubbles(){
+  document.querySelectorAll('.helptext[data-help]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const bubble = g('helpBubble');
+      const text = g('helpBubbleText');
+      const same = bubble && bubble.classList.contains('open') && text && text.textContent === (el.dataset.help || '');
+      if (same) {
+        closeHelpBubble();
+      } else {
+        openHelpBubbleFor(el);
+      }
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.helptext[data-help]')) closeHelpBubble();
+  });
+
+  window.addEventListener('scroll', closeHelpBubble, true);
+  window.addEventListener('resize', closeHelpBubble);
+}
+
+
 window.onload = function(){
   applyStateFromUrl();
   setDefaultDate();
   initModes();
   initCycleButtons();
+  initHelpBubbles();
 };
 
 </script>
