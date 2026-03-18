@@ -538,9 +538,10 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   <button onclick="shareLink()">Save / Share Preset</button>
 </div>
 
-<div id="out" class="output"></div>
+<div id="status" class="output" style="padding:8px;font-size:12px;color:#aaa">Ready.</div>
 
 <script>
+
 function g(id){ return document.getElementById(id); }
 
 function toggleSectionNote(id){
@@ -551,6 +552,15 @@ function toggleSectionNote(id){
 const checkboxIds = Array.from(document.querySelectorAll('input[type="checkbox"]')).map(el => el.id);
 const textIds = Array.from(document.querySelectorAll('input[type="text"], input[type="date"], textarea')).map(el => el.id);
 const selectIds = Array.from(document.querySelectorAll('select')).map(el => el.id);
+
+const modeCycle = {none:'yes', yes:'love', love:'hard', hard:'none'};
+const modeSymbol = {none:'', yes:'✓', love:'♥', hard:'✕'};
+const modeClass = {none:'none', yes:'yes', love:'love', hard:'hard'};
+
+function setStatus(msg){
+  const el = g('status');
+  if (el) el.textContent = msg;
+}
 
 function currentDateString(){
   const d = new Date();
@@ -564,9 +574,45 @@ function setDefaultDate(){
   if (!g('sceneDate').value) g('sceneDate').value = currentDateString();
 }
 
+function isModeInput(id){
+  const el = g(id);
+  return !!(el && el.classList.contains('mode-input'));
+}
+
+function getMode(id){
+  const el = g(id);
+  return (el && el.dataset.mode) ? el.dataset.mode : 'none';
+}
+
+function renderModeBox(input){
+  const box = input.parentElement.querySelector('.modebox');
+  const mode = getMode(input.id);
+  if (!box) return;
+  box.className = 'modebox ' + (modeClass[mode] || 'none');
+  box.textContent = modeSymbol[mode] || '';
+}
+
+function initModes(){
+  document.querySelectorAll('input.mode-input').forEach(input => {
+    if (!input.dataset.mode) input.dataset.mode = 'none';
+    let box = input.parentElement.querySelector('.modebox');
+    if (!box) {
+      box = document.createElement('span');
+      box.className = 'modebox none';
+      input.insertAdjacentElement('afterend', box);
+    }
+    renderModeBox(input);
+    input.parentElement.addEventListener('click', (e) => {
+      e.preventDefault();
+      input.dataset.mode = modeCycle[getMode(input.id)];
+      renderModeBox(input);
+    });
+  });
+}
+
 function defaultState(){
   const d = {};
-  checkboxIds.forEach(id => d[id] = false);
+  checkboxIds.forEach(id => d[id] = isModeInput(id) ? 'none' : false);
   textIds.forEach(id => d[id] = '');
   selectIds.forEach(id => d[id] = g(id).options[0].value);
   d.sceneDate = currentDateString();
@@ -578,8 +624,12 @@ function applyStateFromUrl(){
   p.forEach((v,k) => {
     const el = g(k);
     if (!el) return;
-    if (el.type === 'checkbox') el.checked = (v === 'true');
-    else el.value = v;
+    if (el.type === 'checkbox') {
+      if (isModeInput(k)) el.dataset.mode = v;
+      else el.checked = (v === 'true');
+    } else {
+      el.value = v;
+    }
     if (k.startsWith('sectionNote') && v) {
       const boxId = 'note' + k.replace('sectionNote','');
       const box = g(boxId);
@@ -588,10 +638,19 @@ function applyStateFromUrl(){
   });
 }
 
-function checkedList(ids, labels){
-  const out = [];
-  ids.forEach((id, i) => { if (g(id).checked) out.push(labels[i]); });
-  return out.length ? out.join(', ') : 'None';
+function modeList(ids, labels){
+  const no = [], yes = [], love = [];
+  ids.forEach((id, i) => {
+    const m = getMode(id);
+    if (m === 'hard') no.push(labels[i]);
+    else if (m === 'yes') yes.push(labels[i]);
+    else if (m === 'love') love.push(labels[i]);
+  });
+  const parts = [];
+  if (no.length) parts.push('No: ' + no.join(', '));
+  if (yes.length) parts.push('Yes: ' + yes.join(', '));
+  if (love.length) parts.push('Love: ' + love.join(', '));
+  return parts.length ? parts.join('\n') : 'None';
 }
 
 function touchLine(area, base){
@@ -604,29 +663,35 @@ function touchLine(area, base){
 }
 
 function generateSummary(){
-  const txt = `SCENE NEGOTIATION
+  return `SCENE NEGOTIATION
 
 Date: ${g('sceneDate').value}
 You: ${g('yourName').value || '—'}
 Partner: ${g('partnerName').value || '—'}
-Role: ${g('role').value}
+Your role: ${g('role').value}
 Safeword: ${g('safeword').value || '—'}
 
 ROPE PLACEMENT
-${checkedList(
-  ['ropeChest','ropeHips','ropeLegs','ropeArms','ropeHands','ropeWrists','ropeFeet','ropeNeck','ropeFace','ropeCrotch','ropePartial','ropeFull'],
-  ['Chest','Hips','Legs','Arms','Hands','Wrists','Feet','Neck','Face','Crotch rope','Partial suspension','Full suspension']
+${modeList(
+  ['ropeChest','ropeHips','ropeLegs','ropeArms','ropeHands','ropeWrists','ropeFeet','ropeNeck','ropeFace','ropeCrotch'],
+  ['Chest','Hips','Legs','Arms','Hands','Wrists','Feet','Neck','Face','Crotch rope']
+)}
+
+SUSPENSION / UPLINES
+${modeList(
+  ['ropePartial','ropeFull','ropeUplines'],
+  ['Partial suspension','Full suspension','Positional uplines']
 )}
 
 ROPE STYLE
-${checkedList(
+${modeList(
   ['styleSomatic','styleLab','styleTorment','styleCaress','styleAesthetic'],
   ['Somatic rope','Labbing / technical','Torment rope (semenawa)','Caress rope (aibunawa)','Rope aesthetics']
 )}
 
 ROPE MARKS
 Tolerance: ${g('ropeMarks').value}
-Areas: ${checkedList(
+${modeList(
   ['markChest','markHips','markLegs','markArms','markHands','markWrists','markFeet','markNeck','markFace','markCrotch','markBack','markShoulders'],
   ['Chest','Hips','Legs','Arms','Hands','Wrists','Feet','Neck','Face','Crotch','Back','Shoulders']
 )}
@@ -642,72 +707,74 @@ ${touchLine('Crotch','touchCrotch')}
 ${touchLine('Bottom','touchBottom')}
 
 KISS
-${checkedList(
+${modeList(
   ['kissMouth','kissNeck','kissChest','kissShoulders','kissBack','kissLegs','kissCrotch','kissBottom'],
   ['Mouth','Neck','Chest','Shoulders','Back','Legs','Crotch','Bottom']
 )}
 
 LICK
-${checkedList(
+${modeList(
   ['lickMouth','lickNeck','lickChest','lickShoulders','lickBack','lickLegs','lickCrotch','lickBottom'],
   ['Mouth','Neck','Chest','Shoulders','Back','Legs','Crotch','Bottom']
 )}
 
 BITE
-${checkedList(
+${modeList(
   ['biteMouth','biteNeck','biteChest','biteShoulders','biteBack','biteLegs','biteCrotch','biteBottom'],
   ['Mouth','Neck','Chest','Shoulders','Back','Legs','Crotch','Bottom']
 )}
 
 PROXIMITY
-${checkedList(
+${modeList(
   ['proximityClose','lipBrush'],
   ['Close breath / proximity','Lip brush']
 )}
 
 IMPACT LOCATIONS
-${checkedList(
+${modeList(
   ['impactButt','impactThighs','impactBack','impactShoulders','impactChest','impactGroin'],
   ['Butt','Thighs','Upper back','Shoulders','Chest','Groin']
 )}
 
 IMPACT IMPLEMENTS
-${checkedList(
+${modeList(
   ['impactHand','impactPaddle','impactFlogger','impactCrop','impactRope'],
   ['Hand','Paddle','Flogger','Crop','Rope']
 )}
 
 BUNNY POSITIONS
-${checkedList(
+${modeList(
   ['bunnySeiza','bunnySideSitting','bunnyNadu','bunnyKneel','bunnySit','bunnyStand','bunnyFloor','bunnyChair','bunnyTable'],
   ['Seiza','Side sitting','Nadu','Kneeling','Sitting','Standing','Lying down','Chair','Table']
 )}
 
 TOP POSITION
-Direction: ${checkedList(
+Direction:
+${modeList(
   ['topFront','topBehind','topSide','topAbove','topUnder'],
   ['In front','Behind','Side','Above / on top','Under']
 )}
-Distance: ${checkedList(
+Distance:
+${modeList(
   ['distClose','distMid','distFar'],
   ['Very close','Moderate distance','Distant']
 )}
 
 TALKING
-${checkedList(
+${modeList(
   ['talkConversation','talkMinimal','talkInstructional','talkPlayful','talkDirty'],
   ['Conversational','Minimal','Instructional','Playful','Dirty talk']
 )}
 
 POWER DYNAMICS
 Intensity: ${g('dynamicIntensity').value}
-Types: ${checkedList(
+${modeList(
   ['dynServiceTop','dynServiceBottom','dynOwnership','dynToy','dynNurturing','dynBrat','dynDegrading'],
   ['Service (top)','Service (bottom)','Ownership','Toy','Nurturing','Brat / brat tamer','Degrading']
 )}
 
 AFTERCARE
-${checkedList(
+${modeList(
   ['afterHug','afterCuddle','afterBlanket','afterWater','afterSnacks','afterQuiet','afterTalk','afterDebriefNight','afterNextCheck','afterNextDebrief'],
   ['Hugs','Cuddles','Blanket','Water','Snacks','Quiet','Talking','Debrief tonight','Next-day check-in','Next-day debrief']
 )}
@@ -729,23 +796,34 @@ ${[
   ['Power Dynamics','sectionNotePowerDynamics'],
   ['Aftercare','sectionNoteAftercare']
 ].map(([label,id]) => g(id) && g(id).value.trim() ? (label + ': ' + g(id).value.trim()) : '').filter(Boolean).join('\n') || 'None'}`;
-  g('out').textContent = txt;
 }
 
-async function copySummary(){
-  try{
-    await navigator.clipboard.writeText(g('out').textContent);
-  }catch(e){
-    alert('Copy failed on this browser.');
+async function copyTextRobust(text){
+  if (navigator.clipboard && window.isSecureContext) {
+    await navigator.clipboard.writeText(text);
+    return;
   }
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.setAttribute('readonly', '');
+  ta.style.position = 'fixed';
+  ta.style.top = '-9999px';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  const ok = document.execCommand('copy');
+  document.body.removeChild(ta);
+  if (!ok) throw new Error('copy failed');
 }
 
-function shareLink(){
+function buildShareUrl(){
   const defaults = defaultState();
   const p = new URLSearchParams();
 
   checkboxIds.forEach(id => {
-    if (g(id).checked !== defaults[id]) p.set(id, 'true');
+    const val = isModeInput(id) ? getMode(id) : g(id).checked;
+    if (val !== defaults[id]) p.set(id, String(val));
   });
 
   textIds.forEach(id => {
@@ -759,37 +837,59 @@ function shareLink(){
   });
 
   const base = location.origin + location.pathname;
-  g('out').textContent = p.toString() ? (base + '?' + p.toString()) : base;
+  return p.toString() ? (base + '?' + p.toString()) : base;
+}
+
+async function shareSummary(){
+  const txt = generateSummary();
+  try{
+    if (navigator.share) {
+      await navigator.share({
+        title: 'Scene negotiation summary',
+        text: txt
+      });
+      setStatus('Summary shared.');
+      return;
+    }
+    await copyTextRobust(txt);
+    setStatus('Share sheet unavailable — summary copied.');
+  }catch(e){
+    if (e && e.name === 'AbortError') {
+      setStatus('Share cancelled.');
+      return;
+    }
+    setStatus('Could not share summary automatically.');
+  }
+}
+
+async function shareLink(){
+  const url = buildShareUrl();
+  try{
+    if (navigator.share) {
+      await navigator.share({
+        title: 'Scene preset',
+        text: 'Scene negotiation preset',
+        url: url
+      });
+      setStatus('Preset shared.');
+      return;
+    }
+    await copyTextRobust(url);
+    setStatus('Share sheet unavailable — preset link copied.');
+  }catch(e){
+    if (e && e.name === 'AbortError') {
+      setStatus('Share cancelled.');
+      return;
+    }
+    setStatus('Could not share preset automatically.');
+  }
 }
 
 window.onload = function(){
   applyStateFromUrl();
   setDefaultDate();
+  initModes();
 };
-
-const modeCycle = {none:'yes', yes:'love', love:'hard', hard:'none'};
-const modeSymbol = {none:'', yes:'✓', love:'♥', hard:'✕'};
-const modeClass = {none:'none', yes:'yes', love:'love', hard:'hard'};
-
-function initModes(){
- document.querySelectorAll('input.mode-input').forEach(el=>{
-   el.dataset.mode='none';
-   const box=document.createElement('span');
-   box.className='modebox none';
-   el.after(box);
-
-   el.parentElement.onclick=(e)=>{
-     e.preventDefault();
-     let m=el.dataset.mode;
-     m=modeCycle[m];
-     el.dataset.mode=m;
-     box.className='modebox '+modeClass[m];
-     box.textContent=modeSymbol[m];
-   };
- });
-}
-
-window.addEventListener('load', initModes);
 
 </script>
 
