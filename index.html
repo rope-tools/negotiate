@@ -243,7 +243,8 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
   <div class="section">
     <div class="subhead">Rope Placement</div>
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="ropeChest"><span class="helptext" data-help="Across or around the chest.">Chest</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeFrontTorso"><span class="helptext" data-help="Front of the body from chest to stomach, excluding breasts/nipples.">Front Torso</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="ropeBreasts"><span class="helptext" data-help="Breast or nipple-specific interaction.">Breasts / Nipples</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="ropeBack"><span class="helptext" data-help="Across or around the back.">Back</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="ropeShoulders"><span class="helptext" data-help="Across or around the shoulders.">Shoulders</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="ropeHips"><span class="helptext" data-help="Across or around the hips.">Hips</span></label>
@@ -309,7 +310,8 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </select>
     </label>
     <div class="checkbox-grid">
-      <label class="check"><input class="mode-input" type="checkbox" id="markChest"><span class="helptext" data-help="Across or around the chest.">Chest</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markFrontTorso"><span class="helptext" data-help="Front of the body from chest to stomach, excluding breasts/nipples.">Front Torso</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="markBreasts"><span class="helptext" data-help="Breast or nipple-specific interaction.">Breasts / Nipples</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="markHips"><span class="helptext" data-help="Across or around the hips.">Hips</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="markLegs"><span class="helptext" data-help="On the upper or lower legs.">Legs</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="markArms"><span class="helptext" data-help="On the upper or lower arms.">Arms</span></label>
@@ -402,6 +404,17 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
           <option>Firm Contact</option>
         </select>
         <button type="button" class="cycle-btn" data-select-id="touchShoulders"></button>
+      </div>
+      <div class="touch-card">
+        <div class="name helptext" data-help="Breast or nipple-specific interaction.">Breasts / Nipples</div>
+        <select id="touchBreasts" class="cycle-select">
+          <option selected>Negotiate In Scene</option>
+          <option>None</option>
+          <option>Rope/Body Manipulation Only</option>
+          <option>Light Contact</option>
+          <option>Firm Contact</option>
+        </select>
+        <button type="button" class="cycle-btn" data-select-id="touchBreasts"></button>
       </div>
       <div class="touch-card">
         <div class="name helptext" data-help="The genital area.">Crotch</div>
@@ -532,15 +545,39 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name helptext" data-help="Across or around the chest.">Chest</div>
-        <select id="painChest" class="cycle-select">
+        <div class="name helptext" data-help="Front of the body from chest to stomach, excluding breasts/nipples.">Front Torso</div>
+        <select id="painFrontTorso" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>
         </select>
-        <button type="button" class="cycle-btn" data-select-id="painChest"></button>
+        <button type="button" class="cycle-btn" data-select-id="painFrontTorso"></button>
+      </div>
+
+      <div class="touch-card">
+        <div class="name helptext" data-help="Breast or nipple-specific interaction.">Breasts / Nipples</div>
+        <select id="painBreasts" class="cycle-select">
+          <option selected>Negotiate In Scene</option>
+          <option>No</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+        <button type="button" class="cycle-btn" data-select-id="painBreasts"></button>
+      </div>
+
+      <div class="touch-card">
+        <div class="name helptext" data-help="Breast or nipple-specific interaction.">Breasts / Nipples</div>
+        <select id="impactBreasts" class="cycle-select">
+          <option selected>Negotiate In Scene</option>
+          <option>No</option>
+          <option>Light</option>
+          <option>Moderate</option>
+          <option>Heavy</option>
+        </select>
+        <button type="button" class="cycle-btn" data-select-id="impactBreasts"></button>
       </div>
 
       <div class="touch-card">
@@ -691,15 +728,15 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       </div>
 
       <div class="touch-card">
-        <div class="name helptext" data-help="Across or around the chest.">Chest</div>
-        <select id="impactChest" class="cycle-select">
+        <div class="name helptext" data-help="Front of the body from chest to stomach, excluding breasts/nipples.">Front Torso</div>
+        <select id="impactFrontTorso" class="cycle-select">
           <option selected>Negotiate In Scene</option>
           <option>No</option>
           <option>Light</option>
           <option>Moderate</option>
           <option>Heavy</option>
         </select>
-        <button type="button" class="cycle-btn" data-select-id="impactChest"></button>
+        <button type="button" class="cycle-btn" data-select-id="impactFrontTorso"></button>
       </div>
 
       <div class="touch-card">
@@ -831,7 +868,7 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
       <label class="check"><input class="mode-input" type="checkbox" id="bottomStand"><span class="helptext" data-help="Upright on the feet.">Standing</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="bottomFloor"><span class="helptext" data-help="Resting flat or reclined on a surface.">Lying down</span></label>
       <label class="check"><input class="mode-input" type="checkbox" id="bottomChair"><span class="helptext" data-help="Positioned on or against a chair.">Chair</span></label>
-      <label class="check"><input class="mode-input" type="checkbox" id="bottomTable"><span class="helptext" data-help="Positioned on all fours.">Table</span></label>
+      <label class="check"><input class="mode-input" type="checkbox" id="bottomTable"><span class="helptext" data-help="Positioned on or against a table.">Table</span></label>
     </div>
   </div>
 
@@ -1105,7 +1142,7 @@ function modeList(ids, labels){
   const parts = [];
   if (no.length) parts.push('No: ' + no.join(', '));
   if (yes.length) parts.push('Yes: ' + yes.join(', '));
-  if (love.length) parts.push('Love: ' + love.join(', '));
+  if (love.length) parts.push('Loves: ' + love.join(', '));
   return parts.length ? parts.join('\n').replace(/\n{2,}/g,'\n') : 'No negotiation / in scene';
 }
 
@@ -1185,8 +1222,8 @@ Safeword: ${g('safeword').value || '—'}
 
 ROPE PLACEMENT
 ${groupedModeList(
-  ['ropeChest','ropeBack','ropeShoulders','ropeHips','ropeLegs','ropeArms','ropeHands','ropeWrists','ropeFeet','ropeNeck','ropeFace','ropeCrotch'],
-  ['Chest','Back','Shoulders','Hips','Legs','Arms','Hands','Wrists','Feet','Neck','Face','Crotch rope']
+  ['ropeFrontTorso','ropeBreasts','ropeBack','ropeShoulders','ropeHips','ropeLegs','ropeArms','ropeHands','ropeWrists','ropeFeet','ropeNeck','ropeFace','ropeCrotch'],
+  ['Front Torso','Breasts / Nipples','Back','Shoulders','Hips','Legs','Arms','Hands','Wrists','Feet','Neck','Face','Crotch rope']
 )}
 
 SUSPENSION / UPLINES
@@ -1204,8 +1241,8 @@ ${groupedModeList(
 ROPE MARKS
 Tolerance: ${g('ropeMarks').value}
 ${groupedModeList(
-  ['markChest','markHips','markLegs','markArms','markHands','markWrists','markFeet','markNeck','markFace','markCrotch','markBack','markShoulders'],
-  ['Chest','Hips','Legs','Arms','Hands','Wrists','Feet','Neck','Face','Crotch','Back','Shoulders']
+  ['markFrontTorso','markBreasts','markHips','markLegs','markArms','markHands','markWrists','markFeet','markNeck','markFace','markCrotch','markBack','markShoulders'],
+  ['Front Torso','Breasts / Nipples','Hips','Legs','Arms','Hands','Wrists','Feet','Neck','Face','Crotch','Back','Shoulders']
 )}${g('sectionNoteRopeMarks') && g('sectionNoteRopeMarks').value.trim() ? '\nNotes: ' + g('sectionNoteRopeMarks').value.trim() : ''}
 
 TOUCH
@@ -1216,6 +1253,8 @@ ${groupedSelectList([
   ['Hair','touchHair'],
   ['Face','touchFace'],
   ['Shoulders','touchShoulders'],
+  ['Front Torso','touchFrontTorso'],
+  ['Breasts / Nipples','touchBreasts'],
   ['Crotch','touchCrotch'],
   ['Bottom','touchBottom']
 ])}${g('sectionNoteTouch') && g('sectionNoteTouch').value.trim() ? '\nNotes: ' + g('sectionNoteTouch').value.trim() : ''}
@@ -1249,7 +1288,8 @@ ${groupedSelectList([
   ['Face','painFace'],
   ['Neck','painNeck'],
   ['Shoulders','painShoulders'],
-  ['Chest','painChest'],
+  ['Front Torso','painFrontTorso'],
+  ['Breasts / Nipples','painBreasts'],
   ['Back','painBack'],
   ['Arms','painArms'],
   ['Hands','painHands'],
@@ -1265,7 +1305,8 @@ ${groupedSelectList([
   ['Face','impactFace'],
   ['Neck','impactNeck'],
   ['Shoulders','impactShoulders'],
-  ['Chest','impactChest'],
+  ['Front Torso','impactFrontTorso'],
+  ['Breasts / Nipples','impactBreasts'],
   ['Back','impactBack'],
   ['Arms','impactArms'],
   ['Hands','impactHands'],
