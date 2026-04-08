@@ -220,6 +220,9 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
 
 
 
+
+
+
 <details open style="border:1px solid #555;border-radius:8px;margin-bottom:8px;background:#0f0f0f">
   <summary style="padding:8px 10px;font-weight:600;color:#ccc">Legend</summary>
   <div style="padding:8px 10px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:12px">
@@ -235,6 +238,45 @@ button{border:0;border-radius:8px;background:var(--accent);color:#fff;padding:11
     <span style="display:flex;align-items:center;gap:4px">
       <span class="modebox none"></span><span style="color:#aaa">In-scene</span>
     </span>
+  </div>
+</details>
+
+<details>
+  <summary>📊 Rope Experience</summary>
+  <div class="section">
+    <div class="top">
+      <label class="field">
+        <span>Top / Rigger self-rating</span>
+        <select id="riggerExperience">
+          <option selected>New / learning</option>
+          <option>Some experience</option>
+          <option>Confident / regular</option>
+          <option>Advanced / complex work</option>
+          <option>Suspension experienced</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>Bottom / Model self-rating</span>
+        <select id="modelExperience">
+          <option selected>First time</option>
+          <option>Limited experience</option>
+          <option>Comfortable with floor work</option>
+          <option>Comfortable with partial suspension</option>
+          <option>Comfortable with full suspension</option>
+        </select>
+      </label>
+    </div>
+
+    <div id="experienceWarning" class="output" style="margin-top:8px;padding:8px;font-size:12px;display:none;border-color:#7a5c00;background:#231a00;color:#ffe9a8"></div>
+
+    <label class="field" style="margin-bottom:8px">
+      <span>Rigger notes</span>
+      <textarea id="riggerNotes" placeholder="Training, experience level, suspension experience, or limits."></textarea>
+    </label>
+    <label class="field">
+      <span>Model notes</span>
+      <textarea id="modelNotes" placeholder="Comfort level, injuries, nerve issues, suspension tolerance, or limits."></textarea>
+    </label>
   </div>
 </details>
 
@@ -1203,6 +1245,10 @@ Partner: ${g('partnerName').value || '—'}
 Your role: ${g('role').value}
 Safeword: ${g('safeword').value || '—'}
 
+ROPE EXPERIENCE
+Top / Rigger: ${g('riggerExperience').value}${g('riggerNotes').value.trim() ? '\nRigger notes: ' + g('riggerNotes').value.trim() : ''}
+Bottom / Model: ${g('modelExperience').value}${g('modelNotes').value.trim() ? '\nModel notes: ' + g('modelNotes').value.trim() : ''}
+
 ROPE PLACEMENT
 ${groupedModeList(
   ['ropeFrontTorso','ropeBreasts','ropeBack','ropeShoulders','ropeHips','ropeLegs','ropeArms','ropeHands','ropeWrists','ropeFeet','ropeNeck','ropeFace','ropeCrotch'],
@@ -1673,12 +1719,93 @@ function initHelpBubbles(){
 }
 
 
+
+function experienceRankTop(val){
+  const map = {
+    'New / learning': 1,
+    'Some experience': 2,
+    'Confident / regular': 3,
+    'Advanced / complex work': 4,
+    'Suspension experienced': 5
+  };
+  return map[val] || 0;
+}
+
+function experienceRankBottom(val){
+  const map = {
+    'First time': 1,
+    'Limited experience': 2,
+    'Comfortable with floor work': 3,
+    'Comfortable with partial suspension': 4,
+    'Comfortable with full suspension': 5
+  };
+  return map[val] || 0;
+}
+
+function selectedSuspensionLevel(){
+  const vals = ['ropePartial','ropeFull'].map(id => getMode(id));
+  if (vals[1] && vals[1] !== 'none') return 'full';
+  if (vals[0] && vals[0] !== 'none') return 'partial';
+  return 'none';
+}
+
+function updateExperienceWarning(){
+  const box = g('experienceWarning');
+  if (!box) return;
+
+  const topVal = g('riggerExperience') ? g('riggerExperience').value : '';
+  const bottomVal = g('modelExperience') ? g('modelExperience').value : '';
+  const topRank = experienceRankTop(topVal);
+  const bottomRank = experienceRankBottom(bottomVal);
+  const suspension = selectedSuspensionLevel();
+
+  let messages = [];
+
+  if (suspension === 'partial' && topRank <= 2) {
+    messages.push('Partial suspension is selected while the rigger is still relatively new.');
+  }
+  if (suspension === 'full' && topRank < 5) {
+    messages.push('Full suspension is selected without "Suspension experienced" chosen for the rigger.');
+  }
+  if (suspension === 'partial' && bottomRank <= 3) {
+    messages.push('Partial suspension is selected while the model has not marked comfort with partial suspension.');
+  }
+  if (suspension === 'full' && bottomRank < 5) {
+    messages.push('Full suspension is selected while the model has not marked comfort with full suspension.');
+  }
+
+  const gap = Math.abs(topRank - bottomRank);
+  if (gap >= 2) {
+    messages.push('There is an experience gap between top and bottom.');
+  }
+
+  if (messages.length) {
+    box.style.display = 'block';
+    box.textContent = '⚠ Experience note: ' + messages.join(' ');
+  } else {
+    box.style.display = 'none';
+    box.textContent = '';
+  }
+}
+
 window.onload = function(){
   applyStateFromUrl();
   setDefaultDate();
   initModes();
   initCycleButtons();
+  updateExperienceWarning();
   initHelpBubbles();
+
+  ['riggerExperience','modelExperience'].forEach(id => {
+    const el = g(id);
+    if (el) el.addEventListener('change', updateExperienceWarning);
+  });
+  ['ropePartial','ropeFull'].forEach(id => {
+    const el = g(id);
+    if (el && el.parentElement) {
+      el.parentElement.addEventListener('click', () => setTimeout(updateExperienceWarning, 0));
+    }
+  });
 };
 
 </script>
